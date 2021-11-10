@@ -100,8 +100,3 @@ firstCreature.sayHello()
 var Ringo = Creature()
 Ringo.sayHello()
 print(Ringo.gender)
-
-John.sayHello()
-print(John.gender)
-
-print(firstCreature.children)
