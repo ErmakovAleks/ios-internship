@@ -31,3 +31,18 @@ if let day = DayOfWeek(rawValue: 7){
      
     print(day)
 }
+
+var randomArray = Array(0..<9)
+print(randomArray)
+var arraySlice = randomArray[randomArray.count-4...randomArray.count-2]
+print(arraySlice)
+print(arraySlice[5])
+print(randomArray)
+var newArray = Array(arraySlice)
+print(newArray)
+
+var countryDict = ["RUS": "Russia", "BEL": "Belorussia", "UKR": "Ukraine"]
+var testDict: String? = countryDict.updateValue("Estony", forKey: "EST")
+print(testDict!
+)
+print(countryDict)
