@@ -4,6 +4,5 @@
         <page name='test'/>
         <page name='Creature'/>
         <page name='Restaurant'/>
-        <page name='Creature2'/>
     </pages>
 </playground>

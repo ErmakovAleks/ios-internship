@@ -2,11 +2,12 @@
 
 import Foundation
 
-mainLoop: for i in 1...5 {
-    for y in i...5 {
-        if y == 4  && i == 2 {
-            break mainLoop
-        }
-        print("\(i) - \(y)")
-    }
-}
+let a = "1945"
+let b = "one"
+
+let c = Int(a)
+let d = Int(b)
+
+
+type(of: c)
+type(of: d)

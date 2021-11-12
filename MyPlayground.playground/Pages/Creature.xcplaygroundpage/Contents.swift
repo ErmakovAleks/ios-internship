@@ -3,18 +3,19 @@ import Foundation
 import CoreGraphics
 import Darwin
 
-protocol RegistrationOfNewbornProtocol {
-    func newChild()
+protocol CreatureProtocol {
+    func addChild(mother: Creature, children: [Creature])
+    func rollcall(mother: Creature)
 }
 
 extension String {
     
     static func random(length: Int) -> String {
-        let length = Int.random(in: 0...length)
+        let length = length
         
         return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
             .shuffled()
-            .dropFirst(length)
+            .dropFirst(length > 40 ? length : 40)
             .reduce(into: "") { $0 += $1.description }
     }
 }
@@ -27,14 +28,12 @@ class Creature: Equatable {
     
     let id = UUID()
     
-    //var gender: Gender
     var name: String
     var weight: Double
     var age: Int
     var children = [Creature]()
     
-    init(/*gender: Gender,*/ name: String, weight: Double, age: Int, children: [Creature] = []) {
-        //self.gender = gender
+    init(name: String, weight: Double, age: Int, children: [Creature] = []) {
         self.name = name
         self.weight = weight
         self.age = age
@@ -42,8 +41,7 @@ class Creature: Equatable {
     }
     
     init() {
-        //self.gender = .random()
-        self.name = .random(length: .random(in: 1..<8))
+        self.name = .random(length: .random(in: 0..<52))
         self.weight = .random(in: 1...5)
         self.age = .random(in: 0...100)
         self.children = []
@@ -54,10 +52,6 @@ class Creature: Equatable {
     func sayHello() {
         print("Hello. I have not decided on my gender")
     }
-    
-    /*func isFemale() -> Bool {
-        return self.gender == .female
-    }*/
 }
 
 class Man: Creature {
@@ -73,40 +67,35 @@ class Man: Creature {
 
 class Woman: Creature {
     
-    var registryOfficeWorker: RegistrationOfNewbornProtocol?
-    registryOfficeWorker.newChild(self)
+    var registryOfficeWorker: CreatureProtocol?
     
     override func performGenderOperation() {
         print("I know how to give birth to new children")
-        registryOfficeWorker?.newChild()
+        self.registryOfficeWorker?.addChild(mother: self, children: [Creature(), Creature(), Creature()])
     }
     
     override func sayHello() {
         print("Hello, my name is \(self.name)")
-        self.children.forEach {
+        self.registryOfficeWorker?.rollcall(mother: self)
+        /*self.children.forEach {
             print("Hello, my name is \($0.name) and I am a child of \(self.name)")
-        }
+        }*/
     }
 }
 
-class ChildRegistrator: RegistrationOfNewbornProtocol {
+class ChildRegistrator: CreatureProtocol {
     
-    func newChild() {
-        congratulations()
+    func addChild(mother: Creature, children: [Creature]) {
+        for child in children {
+            mother.children.append(child)
+        }
     }
     
-    func congratulations() {
-        print("We have a newborn!")
-        print("We register it!")
-    }
-    
-    func creation() -> Creature {
-        return Creature()
-    }
-    
-    func registration(motherCreature: Creature) {
-        let child = Creature()
-        motherCreature.children.append(child)
+    func rollcall(mother: Creature) {
+        print("HelloHelloHello!")
+        for child in mother.children {
+            print("My name is \(child.name) and I am child of \(mother.name)")
+        }
     }
 }
 
@@ -118,9 +107,9 @@ var bob = Man(name: "Bob", weight: 5.7, age: 1)
 
 var childRegistrator = ChildRegistrator()
 
-jane.sayHello()
 jane.registryOfficeWorker = childRegistrator
 jane.performGenderOperation()
+jane.sayHello()
 print("")
 
 john.sayHello()
