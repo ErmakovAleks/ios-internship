@@ -4,7 +4,7 @@ import CoreGraphics
 import Darwin
 
 protocol RegistrationOfNewbornProtocol {
-    func newChild() -> Creature
+    func newChild()
 }
 
 extension String {
@@ -74,6 +74,7 @@ class Man: Creature {
 class Woman: Creature {
     
     var registryOfficeWorker: RegistrationOfNewbornProtocol?
+    registryOfficeWorker.newChild(self)
     
     override func performGenderOperation() {
         print("I know how to give birth to new children")
@@ -90,14 +91,22 @@ class Woman: Creature {
 
 class ChildRegistrator: RegistrationOfNewbornProtocol {
     
-    func newChild() -> Creature {
+    func newChild() {
         congratulations()
-        return Creature()
     }
     
     func congratulations() {
         print("We have a newborn!")
         print("We register it!")
+    }
+    
+    func creation() -> Creature {
+        return Creature()
+    }
+    
+    func registration(motherCreature: Creature) {
+        let child = Creature()
+        motherCreature.children.append(child)
     }
 }
 
