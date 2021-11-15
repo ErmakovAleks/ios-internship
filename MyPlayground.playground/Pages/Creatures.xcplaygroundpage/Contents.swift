@@ -4,7 +4,7 @@ import CoreGraphics
 import Darwin
 
 protocol CreatureProtocol {
-    func addChild(mother: Creature, children: [Creature])
+    func registration(mother: Creature, children: [Creature])
     func rollcall(mother: Creature)
 }
 
@@ -31,20 +31,17 @@ class Creature: Equatable {
     var name: String
     var weight: Double
     var age: Int
-    var children = [Creature]()
     
-    init(name: String, weight: Double, age: Int, children: [Creature] = []) {
+    init(name: String, weight: Double, age: Int) {
         self.name = name
         self.weight = weight
         self.age = age
-        self.children = children
     }
     
     init() {
         self.name = .random(length: .random(in: 0..<52))
         self.weight = .random(in: 1...5)
         self.age = .random(in: 0...100)
-        self.children = []
     }
     
     func performGenderOperation() {}
@@ -71,29 +68,32 @@ class Woman: Creature {
     
     func performGenderOperation(child: [Creature]) {
         print("I know how to give birth to new children")
-        self.registryOfficeWorker?.addChild(mother: self, children: child)
+        self.registryOfficeWorker?.registration(mother: self, children: child)
     }
     
     override func sayHello() {
         print("Hello, my name is \(self.name)")
         self.registryOfficeWorker?.rollcall(mother: self)
-        /*self.children.forEach {
-            print("Hello, my name is \($0.name) and I am a child of \(self.name)")
-        }*/
     }
 }
 
 class ChildRegistrator: CreatureProtocol {
     
-    func addChild(mother: Creature, children: [Creature]) {
+    var cardIndex: [String:[String]] = [:]
+    
+    func registration(mother: Creature, children: [Creature]) {
+        var childrenArray: [String] = []
         for child in children {
-            mother.children.append(child)
+            childrenArray.append(child.name)
         }
+        cardIndex[mother.name] = childrenArray
     }
     
     func rollcall(mother: Creature) {
-        for child in mother.children {
-            print("My name is \(child.name) and I am child of \(mother.name)")
+        if let childrenNames = cardIndex[mother.name] {
+            for name in childrenNames {
+                print("My name is \(name), I am a child of \(mother.name)")
+            }
         }
     }
 }
@@ -107,8 +107,9 @@ var bob = Man(name: "Bob", weight: 5.7, age: 1)
 var childRegistrator = ChildRegistrator()
 
 jane.registryOfficeWorker = childRegistrator
-jane.performGenderOperation(child: [Creature(), Creature(),Creature()])
+jane.performGenderOperation(child: [Creature(), Creature(),Creature(), Creature()])
 jane.sayHello()
+
 print("")
 
 john.sayHello()

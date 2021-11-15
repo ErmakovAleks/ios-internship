@@ -2,7 +2,7 @@
 <playground version='6.0' target-platform='ios' buildActiveScheme='true'>
     <pages>
         <page name='test'/>
-        <page name='Creature'/>
+        <page name='Creatures'/>
         <page name='Restaurant'/>
     </pages>
 </playground>
