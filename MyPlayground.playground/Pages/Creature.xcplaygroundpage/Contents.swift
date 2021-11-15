@@ -69,9 +69,9 @@ class Woman: Creature {
     
     var registryOfficeWorker: CreatureProtocol?
     
-    override func performGenderOperation() {
+    func performGenderOperation(child: [Creature]) {
         print("I know how to give birth to new children")
-        self.registryOfficeWorker?.addChild(mother: self, children: [Creature(), Creature(), Creature()])
+        self.registryOfficeWorker?.addChild(mother: self, children: child)
     }
     
     override func sayHello() {
@@ -92,7 +92,6 @@ class ChildRegistrator: CreatureProtocol {
     }
     
     func rollcall(mother: Creature) {
-        print("HelloHelloHello!")
         for child in mother.children {
             print("My name is \(child.name) and I am child of \(mother.name)")
         }
@@ -108,7 +107,7 @@ var bob = Man(name: "Bob", weight: 5.7, age: 1)
 var childRegistrator = ChildRegistrator()
 
 jane.registryOfficeWorker = childRegistrator
-jane.performGenderOperation()
+jane.performGenderOperation(child: [Creature(), Creature(),Creature()])
 jane.sayHello()
 print("")
 
