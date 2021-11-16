@@ -53,9 +53,9 @@ extension String {
 extension Creature {
     
     public static func random(_ copies: Int) -> [Creature] {
-        var creatureArray: [Creature] = []
+        var creatureArray: [Self.Type] = []
         for _ in 0..<copies {
-            creatureArray.append(Creature())
+           
         }
         return [Creature()]
     }

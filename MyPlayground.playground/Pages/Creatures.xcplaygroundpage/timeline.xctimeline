@@ -3,24 +3,24 @@
    version = "3.0">
    <TimelineItems>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/ios/Documents/GitHub/ios-internship/MyPlayground.playground/Pages/Creatures.xcplaygroundpage#CharacterRangeLen=3&amp;CharacterRangeLoc=313&amp;EndingColumnNumber=0&amp;EndingLineNumber=20&amp;StartingColumnNumber=1&amp;StartingLineNumber=17&amp;Timestamp=658760411.767882"
+         documentLocation = "file:///Users/ios/Documents/GitHub/ios-internship/MyPlayground.playground/Pages/Creatures.xcplaygroundpage#CharacterRangeLen=34&amp;CharacterRangeLoc=313&amp;EndingColumnNumber=0&amp;EndingLineNumber=22&amp;StartingColumnNumber=1&amp;StartingLineNumber=17&amp;Timestamp=658770485.204633"
          selectedRepresentationIndex = "0"
          shouldTrackSuperviewWidth = "NO">
       </LoggerValueHistoryTimelineItem>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/ios/Documents/GitHub/ios-internship/MyPlayground.playground/Pages/Creatures.xcplaygroundpage#CharacterRangeLen=9&amp;CharacterRangeLoc=236&amp;EndingColumnNumber=14&amp;EndingLineNumber=13&amp;StartingColumnNumber=5&amp;StartingLineNumber=13&amp;Timestamp=658760411.768102"
-         lockedSize = "{818, 214}"
-         selectedRepresentationIndex = "0"
-         shouldTrackSuperviewWidth = "NO">
-      </LoggerValueHistoryTimelineItem>
-      <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/ios/Documents/GitHub/ios-internship/MyPlayground.playground/Pages/Creatures.xcplaygroundpage#CharacterRangeLen=1&amp;CharacterRangeLoc=315&amp;EndingColumnNumber=0&amp;EndingLineNumber=20&amp;StartingColumnNumber=0&amp;StartingLineNumber=19&amp;Timestamp=658760411.76828"
+         documentLocation = "file:///Users/ios/Documents/GitHub/ios-internship/MyPlayground.playground/Pages/Creatures.xcplaygroundpage#CharacterRangeLen=33&amp;CharacterRangeLoc=314&amp;EndingColumnNumber=0&amp;EndingLineNumber=22&amp;StartingColumnNumber=0&amp;StartingLineNumber=18&amp;Timestamp=658770485.204881"
          lockedSize = "{679, 128}"
          selectedRepresentationIndex = "0"
          shouldTrackSuperviewWidth = "NO">
       </LoggerValueHistoryTimelineItem>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/ios/Documents/GitHub/ios-internship/MyPlayground.playground/Pages/Creatures.xcplaygroundpage#CharacterRangeLen=1&amp;CharacterRangeLoc=315&amp;EndingColumnNumber=0&amp;EndingLineNumber=20&amp;StartingColumnNumber=0&amp;StartingLineNumber=19&amp;Timestamp=658760411.768452"
+         documentLocation = "file:///Users/ios/Documents/GitHub/ios-internship/MyPlayground.playground/Pages/Creatures.xcplaygroundpage#CharacterRangeLen=33&amp;CharacterRangeLoc=314&amp;EndingColumnNumber=0&amp;EndingLineNumber=22&amp;StartingColumnNumber=0&amp;StartingLineNumber=18&amp;Timestamp=658770485.205063"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/ios/Documents/GitHub/ios-internship/MyPlayground.playground/Pages/Creatures.xcplaygroundpage#CharacterRangeLen=5&amp;CharacterRangeLoc=113&amp;EndingColumnNumber=10&amp;EndingLineNumber=6&amp;StartingColumnNumber=5&amp;StartingLineNumber=6&amp;Timestamp=658770485.205251"
+         lockedSize = "{181, 128}"
          selectedRepresentationIndex = "0"
          shouldTrackSuperviewWidth = "NO">
       </LoggerValueHistoryTimelineItem>
