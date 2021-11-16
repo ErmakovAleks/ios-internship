@@ -17,8 +17,4 @@ creatures.forEach {
     $0.performGenderOperation()
 }
 
-var jane = Woman(name: "Jane", weight: 64.2, age: 20)
-var del = ChildRegistrator()
-jane.delegate = del
-del.registration(mother: jane, children: [Creature(), Creature(), Creature()])
-del.childInfo(mother: jane)
+
