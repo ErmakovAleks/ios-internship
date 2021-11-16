@@ -28,3 +28,29 @@ print(resultWalletTwo)
 
 print(handle(wallet: wallet, closure: {(banknote: Int) -> Bool in
         return banknote >= 1000}))
+
+
+class PracticeClass {
+    var favoriteFood: String
+    var numberfOfSkateboards: Int
+    var hasBrokenBone: Bool
+    
+    init() {
+        favoriteFood = String()
+        numberfOfSkateboards = Int()
+        hasBrokenBone = Bool()
+    }
+}
+
+var sampleInstance = PracticeClass()
+print(sampleInstance.favoriteFood)
+print(sampleInstance.numberfOfSkateboards)
+print(sampleInstance.hasBrokenBone)
+
+var x = sampleInstance.numberfOfSkateboards + 15
+print(x)
+
+
+let array = [122, 17, 34, 95, 81, 128, 37, 177, 69, 19, 56]
+var sortedArray = array.sorted(by: {$0 < $1})
+print(sortedArray)
