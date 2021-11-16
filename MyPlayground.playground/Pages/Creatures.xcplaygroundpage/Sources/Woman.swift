@@ -1,16 +1,15 @@
 import Foundation
-import Creature
 
 public class Woman: Creature {
     
-    var registryOfficeWorker: CreatureProtocol?
+    public var registryOfficeWorker: CreatureProtocol?
     
-    func performGenderOperation(child: [Creature]) {
+    public func performGenderOperation(child: [Creature]) {
         print("I know how to give birth to new children")
         self.registryOfficeWorker?.registration(mother: self, children: child)
     }
     
-    override func sayHello() {
+    override public func sayHello() {
         print("Hello, my name is \(self.name)")
         self.registryOfficeWorker?.rollcall(mother: self)
     }

@@ -12,6 +12,11 @@ extension String {
     }
 }
 
+public protocol CreatureProtocol {
+    func registration(mother: Creature, children: [Creature])
+    func rollcall(mother: Creature)
+}
+
 public class Creature: Equatable {
     
     public static func == (lhs: Creature, rhs: Creature) -> Bool {
@@ -24,13 +29,13 @@ public class Creature: Equatable {
     var weight: Double
     var age: Int
     
-    init(name: String, weight: Double, age: Int) {
+    public init(name: String, weight: Double, age: Int) {
         self.name = name
         self.weight = weight
         self.age = age
     }
     
-    init() {
+    public init() {
         self.name = .random(length: .random(in: 0..<52))
         self.weight = .random(in: 1...5)
         self.age = .random(in: 0...100)
