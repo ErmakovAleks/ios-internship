@@ -3,30 +3,22 @@ import Foundation
 import CoreGraphics
 import Darwin
 
-var john = Man(name: "John", weight: 100.3, age: 2)
-
-var jane = Woman(name: "Jane", weight: 52.8, age: 25)
-
-var bob = Man(name: "Bob", weight: 5.7, age: 1)
-
-var stella = Woman(name: "Stella", weight: 56.7, age: 22)
-
 var childRegistrator = ChildRegistrator()
+let women: [Woman] = Woman.random(5)
 
-jane.registryOfficeWorker = childRegistrator
-jane.performGenderOperation(child: [Creature(), Creature(),Creature(), Creature()])
-jane.sayHello()
-print("")
-print("Jane's children:")
-print(childRegistrator.childInfo(mother: jane) ?? "no children")
-print("")
+women.forEach {
+    $0.delegate = childRegistrator
+}
 
-stella.registryOfficeWorker = childRegistrator
-print("Stella's children:")
-print(childRegistrator.childInfo(mother: stella) ?? "no children")
-print("")
+let men: [Man] = Man.random(5)
+let creatures = women + men
 
+creatures.forEach {
+    $0.performGenderOperation()
+}
 
-
-john.sayHello()
-john.performGenderOperation()
+var jane = Woman(name: "Jane", weight: 64.2, age: 20)
+var del = ChildRegistrator()
+jane.delegate = del
+del.registration(mother: jane, children: [Creature(), Creature(), Creature()])
+del.childInfo(mother: jane)

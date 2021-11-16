@@ -1,18 +1,8 @@
 import Foundation
 
-extension String {
-    
-    static func random(length: Int) -> String {
-        let length = length
-        
-        return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-            .shuffled()
-            .dropFirst(length > 40 ? length : 40)
-            .reduce(into: "") { $0 += $1.description }
-    }
-}
 
-public protocol CreatureProtocol {
+public protocol WomanDelegate {
+    
     func registration(mother: Creature, children: [Creature])
     func rollcall(mother: Creature)
 }
@@ -41,9 +31,32 @@ public class Creature: Equatable {
         self.age = .random(in: 0...100)
     }
     
-    func performGenderOperation() {}
+    public func performGenderOperation() {}
 
-    func sayHello() {
+    public func sayHello() {
         print("Hello. I have not decided on my gender")
+    }
+}
+
+extension String {
+    
+    static func random(length: Int) -> String {
+        let length = length
+        
+        return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            .shuffled()
+            .dropFirst(length > 40 ? length : 40)
+            .reduce(into: "") { $0 += $1.description }
+    }
+}
+
+extension Creature {
+    
+    public static func random(_ copies: Int) -> [Creature] {
+        var creatureArray: [Creature] = []
+        for _ in 0..<copies {
+            creatureArray.append(Creature())
+        }
+        return [Creature()]
     }
 }

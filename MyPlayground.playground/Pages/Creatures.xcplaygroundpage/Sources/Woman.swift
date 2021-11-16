@@ -2,15 +2,27 @@ import Foundation
 
 public class Woman: Creature {
     
-    public var registryOfficeWorker: CreatureProtocol?
+    public var delegate: WomanDelegate?
     
-    public func performGenderOperation(child: [Creature]) {
+    override public func performGenderOperation() {
         print("I know how to give birth to new children")
-        self.registryOfficeWorker?.registration(mother: self, children: child)
+        let childs = [Creature()]
+        self.delegate?.registration(mother: self, children: childs)
     }
     
     override public func sayHello() {
         print("Hello, my name is \(self.name)")
-        self.registryOfficeWorker?.rollcall(mother: self)
+        self.delegate?.rollcall(mother: self)
+    }
+}
+
+extension Woman {
+    
+    public static func random(_ copies: Int) -> [Woman] {
+        var womenArray: [Woman] = []
+        for _ in 0..<copies {
+            womenArray.append(Woman())
+        }
+        return womenArray
     }
 }

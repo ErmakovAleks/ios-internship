@@ -3,7 +3,24 @@
    version = "3.0">
    <TimelineItems>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/ios/Documents/GitHub/ios-internship/MyPlayground.playground/Pages/Creatures.xcplaygroundpage#CharacterRangeLen=37&amp;CharacterRangeLoc=469&amp;EndingColumnNumber=0&amp;EndingLineNumber=20&amp;StartingColumnNumber=15&amp;StartingLineNumber=17&amp;Timestamp=658750408.2102081"
+         documentLocation = "file:///Users/ios/Documents/GitHub/ios-internship/MyPlayground.playground/Pages/Creatures.xcplaygroundpage#CharacterRangeLen=212&amp;CharacterRangeLoc=313&amp;EndingColumnNumber=0&amp;EndingLineNumber=24&amp;StartingColumnNumber=1&amp;StartingLineNumber=17&amp;Timestamp=658760087.602692"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/ios/Documents/GitHub/ios-internship/MyPlayground.playground/Pages/Creatures.xcplaygroundpage#CharacterRangeLen=9&amp;CharacterRangeLoc=236&amp;EndingColumnNumber=14&amp;EndingLineNumber=13&amp;StartingColumnNumber=5&amp;StartingLineNumber=13&amp;Timestamp=658760087.602878"
+         lockedSize = "{818, 214}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/ios/Documents/GitHub/ios-internship/MyPlayground.playground/Pages/Creatures.xcplaygroundpage#CharacterRangeLen=28&amp;CharacterRangeLoc=497&amp;EndingColumnNumber=0&amp;EndingLineNumber=24&amp;StartingColumnNumber=0&amp;StartingLineNumber=23&amp;Timestamp=658760087.603053"
+         lockedSize = "{679, 128}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/ios/Documents/GitHub/ios-internship/MyPlayground.playground/Pages/Creatures.xcplaygroundpage#CharacterRangeLen=27&amp;CharacterRangeLoc=498&amp;EndingColumnNumber=0&amp;EndingLineNumber=24&amp;StartingColumnNumber=1&amp;StartingLineNumber=23&amp;Timestamp=658760087.603228"
          selectedRepresentationIndex = "0"
          shouldTrackSuperviewWidth = "NO">
       </LoggerValueHistoryTimelineItem>

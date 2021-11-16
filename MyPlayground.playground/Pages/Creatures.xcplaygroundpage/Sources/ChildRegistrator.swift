@@ -1,6 +1,6 @@
 import Foundation
 
-public class ChildRegistrator: CreatureProtocol {
+public class ChildRegistrator: WomanDelegate {
     
     var cardIndex: [String:[String]] = [:]
     

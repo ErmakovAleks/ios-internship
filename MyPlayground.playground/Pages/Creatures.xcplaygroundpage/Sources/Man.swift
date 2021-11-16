@@ -10,3 +10,14 @@ public class Man: Creature {
         print("Hi, dude, my name is \(self.name)")
     }
 }
+
+extension Man {
+    
+    public static func random(_ copies: Int) -> [Man] {
+        var menArray: [Man] = []
+        for _ in 0..<copies {
+            menArray.append(Man())
+        }
+        return menArray
+    }
+}
