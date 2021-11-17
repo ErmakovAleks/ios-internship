@@ -16,7 +16,3 @@ let creatures = women + men
 creatures.forEach {
     $0.performGenderOperation()
 }
-
-type(of: men)
-type(of: men[0])
-

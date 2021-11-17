@@ -19,10 +19,6 @@ public class Woman: Creature {
 extension Woman {
     
     public static func random(_ copies: Int) -> [Woman] {
-        var womenArray: [Woman] = []
-        for _ in 0..<copies {
-            womenArray.append(Woman())
-        }
-        return womenArray
+         return (0..<copies).map{ _ in Woman()}
     }
 }

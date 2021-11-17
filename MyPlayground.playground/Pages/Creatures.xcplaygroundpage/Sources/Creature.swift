@@ -49,14 +49,3 @@ extension String {
             .reduce(into: "") { $0 += $1.description }
     }
 }
-
-extension Creature {
-    
-    public static func random(_ copies: Int) -> [Creature] {
-        var creatureArray: [Self.Type] = []
-        for _ in 0..<copies {
-           
-        }
-        return [Creature()]
-    }
-}

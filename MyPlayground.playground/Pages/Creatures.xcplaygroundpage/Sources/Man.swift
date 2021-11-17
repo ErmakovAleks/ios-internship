@@ -14,10 +14,6 @@ public class Man: Creature {
 extension Man {
     
     public static func random(_ copies: Int) -> [Man] {
-        var menArray: [Man] = []
-        for _ in 0..<copies {
-            menArray.append(Man())
-        }
-        return menArray
+        return (0..<copies).map{ _ in Man()}
     }
 }
