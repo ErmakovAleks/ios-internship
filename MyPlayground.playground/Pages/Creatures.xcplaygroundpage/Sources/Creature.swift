@@ -49,3 +49,10 @@ extension String {
             .reduce(into: "") { $0 += $1.description }
     }
 }
+
+public extension Creature {
+
+    static func random<R: Creature>(count: Int, fabric: () -> (R)) -> [R] {
+        (0..<count).map { _ in fabric() }
+    }
+}

@@ -16,9 +16,9 @@ public class Woman: Creature {
     }
 }
 
-extension Woman {
+/*extension Woman {
     
     public static func random(_ copies: Int) -> [Woman] {
          return (0..<copies).map{ _ in Woman()}
     }
-}
+}*/

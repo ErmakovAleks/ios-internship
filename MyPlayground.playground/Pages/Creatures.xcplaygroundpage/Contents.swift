@@ -4,13 +4,13 @@ import CoreGraphics
 import Darwin
 
 var childRegistrator = ChildRegistrator()
-let women: [Woman] = Woman.random(5)
+let women = Creature.random(count: 5, fabric: Woman.init)
 
 women.forEach {
     $0.delegate = childRegistrator
 }
 
-let men: [Man] = Man.random(5)
+let men = Creature.random(count: 5, fabric: Man.init)
 let creatures = women + men
 
 creatures.forEach {

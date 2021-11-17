@@ -4,5 +4,6 @@
         <page name='test'/>
         <page name='Creatures'/>
         <page name='Restaurant'/>
+        <page name='CarWash'/>
     </pages>
 </playground>
