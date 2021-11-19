@@ -1,10 +1,10 @@
 import Foundation
 
 public class Room {
-    var humanCapacity: Int
-    var employees: [Employee]
+    public var humanCapacity: Int
+    public var employees: [Employee]
     
-    init(humanCapacity: Int = 1, employees: [Employee] = []) {
+    public init(humanCapacity: Int = 1, employees: [Employee] = []) {
         self.humanCapacity = humanCapacity
         self.employees = employees
     }

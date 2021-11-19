@@ -1,7 +1,12 @@
 import Foundation
 
-public class Washer: Employee {
-    var productivity: Int
+public class Washer: Employee, TransferDelegate {
+    
+    public var delegate: TransferDelegate?
+    
+    public var productivity: Int
+    
+    public var serviceCost: Double = 20.0
     
     public init(name: String,
                   gender: Gender,
@@ -17,5 +22,28 @@ public class Washer: Employee {
                    age: age,
                    salary: salary,
                    bankAccount: bankAccount)
+    }
+    
+    private func checkCar(client: Car) -> Bool {
+        return (client.getMoneyInfo() >= serviceCost) && client.getCleannessInfo()
+    }
+    
+    private func moneyFromClient(client: Car) {
+        client.pay(payment: serviceCost)
+    }
+    
+    public func washing(client: Car) {
+        if checkCar(client: client) {
+            client.pay(payment: serviceCost)
+            self.delegate?.requestEarnings(sum: serviceCost)
+            client.setCleanness(clean: true)
+            print("Car washed, sir!")
+        } else {
+            print("I'm sorry, you don't have enough money, sir")
+        }
+    }
+    
+    public func requestEarnings(sum: Double) {
+        bankAccount += sum
     }
 }

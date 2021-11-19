@@ -1,23 +1,23 @@
 import Foundation
 
-enum Gender {
+/*public enum Gender {
     case male
     case female
 }
 
-enum Salary {
+public enum Salary {
     case value(Double)
     case none
-}
+}*/
 
 public class Employee {
-    var name: String
-    var gender: Gender
-    var age: Int
-    var salary: Salary
-    var bankAccount: Double
+    public var name: String
+    public var gender: Gender
+    public var age: Int
+    public var salary: Salary
+    internal var bankAccount: Double
     
-    init(name: String,
+    public init(name: String,
          gender: Gender,
          age: Int,
          salary: Salary = .value(2000.0),

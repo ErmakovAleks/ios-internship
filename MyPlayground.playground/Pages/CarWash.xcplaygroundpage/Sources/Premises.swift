@@ -1,10 +1,15 @@
 import Foundation
 
 public class Premises: Room {
-    var carCapacity: Int
+    public var carCapacity: Int
     
-    init(carCapacity: Int = 1) {
+    public init(humanCapacity: Int = 1,
+         employees: [Employee],
+         carCapacity: Int = 1) {
+        
         self.carCapacity = carCapacity
-        super.init()
+        
+        super.init(humanCapacity: humanCapacity,
+                   employees: employees)
     }
 }
