@@ -15,10 +15,3 @@ public class Woman: Creature {
         self.delegate?.rollcall(mother: self)
     }
 }
-
-/*extension Woman {
-    
-    public static func random(_ copies: Int) -> [Woman] {
-         return (0..<copies).map{ _ in Woman()}
-    }
-}*/

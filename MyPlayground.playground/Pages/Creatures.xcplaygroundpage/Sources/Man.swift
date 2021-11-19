@@ -10,10 +10,3 @@ public class Man: Creature {
         print("Hi, dude, my name is \(self.name)")
     }
 }
-
-/*extension Man {
-    
-    public static func random(_ copies: Int) -> [Man] {
-        return (0..<copies).map{ _ in Man()}
-    }
-}*/

@@ -3,7 +3,7 @@ import Foundation
 public class Washer: Employee {
     var productivity: Int
     
-    init(name: String,
+    public init(name: String,
                   gender: Gender,
                   age: Int,
                   salary: Salary = .value(2000.0),

@@ -5,12 +5,6 @@ enum Gender {
     case female
 }
 
-enum Experience {
-    case newbie
-    case specialist
-    case master
-}
-
 enum Salary {
     case value(Double)
     case none
@@ -27,8 +21,7 @@ public class Employee {
          gender: Gender,
          age: Int,
          salary: Salary = .value(2000.0),
-         bankAccount: Double = 0.0,
-         experience: Experience = Experience.newbie) {
+         bankAccount: Double = 0.0) {
         
         self.name = name
         self.gender = gender
