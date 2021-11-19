@@ -4,18 +4,13 @@ public class Washer: Employee, TransferDelegate {
     
     public var delegate: TransferDelegate?
     
-    public var productivity: Int
-    
     public var serviceCost: Double = 20.0
     
-    public init(name: String,
+    public override init(name: String,
                   gender: Gender,
                   age: Int,
                   salary: Salary = .value(2000.0),
-                  bankAccount: Double = 0.0,
-                  productivity: Int = 1) {
-        
-        self.productivity = productivity
+                  bankAccount: Double = 0.0) {
         
         super.init(name: name,
                    gender: gender,

@@ -1,15 +1,5 @@
 import Foundation
 
-public enum Gender {
-    case male
-    case female
-}
-
-public enum Salary {
-    case value(Double)
-    case none
-}
-
 var clientCar: Car = Car(money: 50.0, cleanness: false)
 
 
@@ -35,5 +25,3 @@ john.delegate = paul
 paul.washerDelegate = john
 
 paul.directorDelegate = ringo
-
-

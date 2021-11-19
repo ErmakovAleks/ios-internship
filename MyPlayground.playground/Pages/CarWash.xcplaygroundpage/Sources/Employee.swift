@@ -1,6 +1,6 @@
 import Foundation
 
-/*public enum Gender {
+public enum Gender {
     case male
     case female
 }
@@ -8,7 +8,7 @@ import Foundation
 public enum Salary {
     case value(Double)
     case none
-}*/
+}
 
 public class Employee {
     public var name: String

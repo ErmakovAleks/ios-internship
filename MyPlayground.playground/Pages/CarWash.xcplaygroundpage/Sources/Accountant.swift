@@ -6,7 +6,7 @@ public class Accountant: Employee, TransferDelegate {
     
     public var washerDelegate: TransferDelegate?
     
-    override init(name: String,
+    public override init(name: String,
                   gender: Gender,
                   age: Int,
                   salary: Salary = .value(2200.0),
