@@ -18,7 +18,7 @@ public class Washer: Employee {
     // MARK: -
     // MARK: Public functions
     
-    public func checkQueue(object: CarContainable) {
+    public func checkQueue<T: CarContainable>(object: T) {
         if !object.cars.isEmpty {
             washing(client: object.cars[0])
             object.cars.remove(at: 0)

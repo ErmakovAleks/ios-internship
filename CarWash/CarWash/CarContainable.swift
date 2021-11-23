@@ -1,5 +1,5 @@
 import Foundation
 
-public protocol CarContainable: AnyObject, Collection {
+public protocol CarContainable: AnyObject {
     var cars: [Car] { get set }
 }
