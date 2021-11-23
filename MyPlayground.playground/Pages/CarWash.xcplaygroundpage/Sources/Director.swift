@@ -1,9 +1,8 @@
 import Foundation
 
-public class Director: Employee {
-    public var profit = Double()
+public class Director: Employee, TransferDelegate {
     
-    init(name: String,
+    public override init(name: String,
                   gender: Gender,
                   age: Int,
                   salary: Salary = .none,
@@ -14,5 +13,9 @@ public class Director: Employee {
                    age: age,
                    salary: salary,
                    bankAccount: bankAccount)
+    }
+    
+    public func requestEarnings(sum: Double) {
+        bankAccount += sum
     }
 }

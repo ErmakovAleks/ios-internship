@@ -1,9 +1,12 @@
 import Foundation
 
-public class Accountant: Employee {
-    public var earnings = Double()
+public class Accountant: Employee, TransferDelegate {
     
-    init(name: String,
+    public var directorDelegate: TransferDelegate?
+    
+    public var washerDelegate: TransferDelegate?
+    
+    public override init(name: String,
                   gender: Gender,
                   age: Int,
                   salary: Salary = .value(2200.0),
@@ -14,5 +17,15 @@ public class Accountant: Employee {
                    age: age,
                    salary: salary,
                    bankAccount: bankAccount)
+    }
+    
+    public func requestEarnings(sum: Double) {
+        calculateProfit(sum: sum)
+    }
+    
+    private func calculateProfit(sum: Double) {
+        self.bankAccount += sum * Double(self.salary)!
+        self.washerDelegate?.requestEarnings(sum: sum * Double(washerDelegate.salary))
+        self.directorDelegate?.requestEarnings(sum: sum - sum * (Double(self.salary) + Double(directorDelegate.salary)))
     }
 }
