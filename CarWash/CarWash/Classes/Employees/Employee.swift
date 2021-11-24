@@ -15,17 +15,17 @@ public class Employee: ActionDelegate, MoneyContainable {
     // MARK: -
     // MARK: Public variables
     
-    public var money: Int = 0
+    public var money: Double = 0
     public var name: String
     public var gender: Gender
     public var age: Int
     public var salary: Salary
-    public var bankAccount: Double = 0.0
+    public var bankAccount: Double = 0
     
     // MARK: -
     // MARK: Initializations
     
-    public init(name: String, gender: Gender, age: Int, salary: Salary = .value(0.2), bankAccount: Double = 0.0, money: Int = 0) {
+    public init(name: String, gender: Gender, age: Int, salary: Salary = .value(0.2), bankAccount: Double = 0.0, money: Double = 0) {
         self.name = name
         self.gender = gender
         self.age = age

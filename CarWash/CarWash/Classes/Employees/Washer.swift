@@ -11,7 +11,7 @@ public class Washer: Employee {
     // MARK: -
     // MARK: Initializations
     
-    public override init(name: String, gender: Gender, age: Int, salary: Salary = .value(0.15), bankAccount: Double = 0.0, money: Int = 0) {
+    public override init(name: String, gender: Gender, age: Int, salary: Salary = .value(0.15), bankAccount: Double = 0.0, money: Double = 0) {
         super.init(name: name, gender: gender, age: age, salary: salary, bankAccount: bankAccount, money: money)
     }
     
@@ -20,13 +20,14 @@ public class Washer: Employee {
     
     public func checkQueue<T: CarContainable>(object: T) {
         if !object.cars.isEmpty {
-            washing(client: object.cars[0])
-            object.cars.remove(at: 0)
+            washing(client: object.cars.extract()!)
+        } else {
+            print("There are no cars in the queue, sir!")
         }
     }
     
-    public func washing(client: Car) {
-        if checkCar(client: client) {
+    public func washing(client: Car!) {
+        if isPermissible(client: client) {
             moneyFromClient(client: client)
             self.delegate?.requestEarnings(object: self)
             client.cleanness = true
@@ -43,12 +44,12 @@ public class Washer: Employee {
     // MARK: -
     // MARK: Private functions
     
-    private func checkCar(client: Car) -> Bool {
-        return (Double(client.money) >= serviceCost) && !client.cleanness
+    private func isPermissible(client: Car) -> Bool {
+        return client.money >= serviceCost && !client.cleanness
     }
     
     private func moneyFromClient(client: Car) {
-        client.pay(payment: serviceCost)
-        self.money += Int(serviceCost)
+        
+        self.money += client.pay(payment: serviceCost)
     }
 }

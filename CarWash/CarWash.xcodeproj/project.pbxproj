@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81EDEAEB274E2BEC00977000 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EDEAEA274E2BEC00977000 /* Queue.swift */; };
 		8458271C274C1A2800AB23EF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458271B274C1A2800AB23EF /* main.swift */; };
 		84582724274C1C4B00AB23EF /* Accountant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84582723274C1C4B00AB23EF /* Accountant.swift */; };
 		84582727274C1C8200AB23EF /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84582726274C1C8200AB23EF /* Building.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		81EDEAEA274E2BEC00977000 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		84582718274C1A2800AB23EF /* CarWash */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CarWash; sourceTree = BUILT_PRODUCTS_DIR; };
 		8458271B274C1A2800AB23EF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		84582723274C1C4B00AB23EF /* Accountant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accountant.swift; sourceTree = "<group>"; };
@@ -60,6 +62,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		81EDEAEC274E696200977000 /* Employees */ = {
+			isa = PBXGroup;
+			children = (
+				84582723274C1C4B00AB23EF /* Accountant.swift */,
+				8458272C274C1E2700AB23EF /* Director.swift */,
+				8458272F274C20EE00AB23EF /* Employee.swift */,
+				8458273B274C229D00AB23EF /* Washer.swift */,
+			);
+			path = Employees;
+			sourceTree = "<group>";
+		};
+		81EDEAED274E69F100977000 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				84E131B4274CA3C700866BA0 /* CarContainable.swift */,
+				8458273E274C22F400AB23EF /* MoneyContanaible.swift */,
+				84582738274C221600AB23EF /* ActionDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		81EDEAEE274E6A5300977000 /* Buildings */ = {
+			isa = PBXGroup;
+			children = (
+				84582726274C1C8200AB23EF /* Building.swift */,
+				84582732274C217900AB23EF /* Premises.swift */,
+				84582735274C21C300AB23EF /* Room.swift */,
+			);
+			path = Buildings;
+			sourceTree = "<group>";
+		};
+		81EDEAEF274E6AC000977000 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				84582729274C1DE300AB23EF /* Car.swift */,
+				81EDEAEC274E696200977000 /* Employees */,
+				81EDEAEE274E6A5300977000 /* Buildings */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		81EDEAF0274E6AE800977000 /* Structures */ = {
+			isa = PBXGroup;
+			children = (
+				81EDEAEA274E2BEC00977000 /* Queue.swift */,
+			);
+			path = Structures;
+			sourceTree = "<group>";
+		};
 		8458270F274C1A2800AB23EF = {
 			isa = PBXGroup;
 			children = (
@@ -79,18 +130,10 @@
 		8458271A274C1A2800AB23EF /* CarWash */ = {
 			isa = PBXGroup;
 			children = (
+				81EDEAF0274E6AE800977000 /* Structures */,
+				81EDEAEF274E6AC000977000 /* Classes */,
+				81EDEAED274E69F100977000 /* Protocols */,
 				8458271B274C1A2800AB23EF /* main.swift */,
-				84582723274C1C4B00AB23EF /* Accountant.swift */,
-				84582726274C1C8200AB23EF /* Building.swift */,
-				84582729274C1DE300AB23EF /* Car.swift */,
-				8458272C274C1E2700AB23EF /* Director.swift */,
-				8458272F274C20EE00AB23EF /* Employee.swift */,
-				84582732274C217900AB23EF /* Premises.swift */,
-				84582735274C21C300AB23EF /* Room.swift */,
-				84582738274C221600AB23EF /* ActionDelegate.swift */,
-				8458273B274C229D00AB23EF /* Washer.swift */,
-				8458273E274C22F400AB23EF /* MoneyContanaible.swift */,
-				84E131B4274CA3C700866BA0 /* CarContainable.swift */,
 			);
 			path = CarWash;
 			sourceTree = "<group>";
@@ -156,6 +199,7 @@
 				84E131B5274CA3C800866BA0 /* CarContainable.swift in Sources */,
 				84582739274C221600AB23EF /* ActionDelegate.swift in Sources */,
 				84582730274C20EE00AB23EF /* Employee.swift in Sources */,
+				81EDEAEB274E2BEC00977000 /* Queue.swift in Sources */,
 				8458273C274C229D00AB23EF /* Washer.swift in Sources */,
 				84582736274C21C300AB23EF /* Room.swift in Sources */,
 				84582727274C1C8200AB23EF /* Building.swift in Sources */,

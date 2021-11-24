@@ -6,14 +6,14 @@ public class Premises: Room, CarContainable {
     // MARK: Public variables
     
     public var carCapacity: Int
-    public var cars: [Car]
+    public var cars: Queue<Car?>
     
     // MARK: -
     // MARK: Initializations
     
-    public init(humanCapacity: Int = 1, employees: [Employee], carCapacity: Int = 1, cars: [Car]) {
+    public init(humanCapacity: Int = 1, employees: [Employee], carCapacity: Int = 1) {
         self.carCapacity = carCapacity
-        self.cars = cars
+        self.cars = Queue()
         
         super.init(humanCapacity: humanCapacity, employees: employees)
     }

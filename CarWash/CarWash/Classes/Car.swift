@@ -5,21 +5,28 @@ public class Car {
     // MARK: -
     // MARK: Public variables
     
-    public var money = Int()
+    public var money = Double()
     public var cleanness = Bool()
     
     // MARK: -
     // MARK: Initializations
     
-    public init(money: Int, cleanness: Bool) {
+    public init(money: Double, cleanness: Bool) {
         self.money = money
         self.cleanness = cleanness
+    }
+    
+    public init() {
+        self.money = Double.random(in: 0...100)
+        self.cleanness = Bool.random()
     }
     
     // MARK: -
     // MARK: Public functions
     
-    public func pay(payment: Double) {
-        money = Int(Double(self.money) - payment)
+    public func pay(payment: Double) -> Double {
+        money = self.money - payment
+        return payment
     }
 }
+
