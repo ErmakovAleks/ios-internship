@@ -11,34 +11,28 @@ public class Washer: Employee {
     // MARK: -
     // MARK: Initializations
     
-    public override init(name: String, gender: Gender, age: Int, salary: Salary = .value(0.15), bankAccount: Double = 0.0, money: Double = 0) {
-        super.init(name: name, gender: gender, age: age, salary: salary, bankAccount: bankAccount, money: money)
+    public override init(name: String, gender: Gender, salary: Salary = .value(0.15), bankAccount: Double = 0.0, money: Double = 0) {
+        super.init(name: name, gender: gender, salary: salary, bankAccount: bankAccount, money: money)
+        position = "washer"
     }
     
     // MARK: -
     // MARK: Public functions
     
-    public func checkQueue<T: CarContainable>(object: T) {
-        if !object.cars.isEmpty {
-            washing(client: object.cars.extract()!)
-        } else {
-            print("There are no cars in the queue, sir!")
-        }
+    public func action(car: Car!) {
+        washing(client: car)
     }
     
     public func washing(client: Car!) {
         if isPermissible(client: client) {
             moneyFromClient(client: client)
-            self.delegate?.requestEarnings(object: self)
+            message = "My name is \(self.name), I am a \(self.position), I have \(self.bankAccount) on my bank account"
             client.cleanness = true
-            print("Car washed, sir!")
         } else {
-            print("I'm sorry, you don't have enough money, sir")
+            isSuccess = false
+            message = "I'm sorry, you don't have enough money, sir"
         }
-    }
-    
-    public override func requestEarnings(object: MoneyContainable) {
-        fatalError("There is no function implementation in this class")
+        self.delegate?.report(object: self)
     }
     
     // MARK: -
@@ -49,7 +43,6 @@ public class Washer: Employee {
     }
     
     private func moneyFromClient(client: Car) {
-        
         self.money += client.pay(payment: serviceCost)
     }
 }

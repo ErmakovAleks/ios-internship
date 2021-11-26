@@ -3,9 +3,9 @@ import Foundation
 let clientOne = Car(money: 50, cleanness: false)
 let clientTwo = Car(money: 70, cleanness: false)
 
-let john = Washer(name: "John", gender: .male, age: 20, salary: .value(0.15))
-let paul = Accountant(name: "Paul", gender: .male, age: 25, salary: .value(0.2))
-let ringo = Director(name: "Ringo", gender: .male, age: 30)
+let john = Washer(name: "John", gender: .male, salary: .value(0.15))
+let paul = Accountant(name: "Paul", gender: .male, salary: .value(0.2))
+let ringo = Director(name: "Ringo", gender: .male)
 
 let washingPremises = Premises(humanCapacity: 1, employees: [john], carCapacity: 1)
 let washingBuilding = Building(rooms: [washingPremises])
@@ -13,13 +13,14 @@ let washingBuilding = Building(rooms: [washingPremises])
 let adminCabinet = Room(humanCapacity: 1, employees: [paul])
 let adminBuilding = Building(rooms: [adminCabinet])
 
-john.delegate = paul
-paul.delegate = ringo
+let view = View()
+let controller = Controller(view: view, director: ringo, accountant: paul, washer: john)
+
+john.delegate = controller
+paul.delegate = controller
+ringo.delegate = controller
 
 while(true) {
     washingPremises.cars.add(Car())
-    john.checkQueue(object: washingPremises)
-    john.balanceInfo()
-    paul.balanceInfo()
-    ringo.balanceInfo()
+    controller.checkQueue(object: washingPremises)
 }

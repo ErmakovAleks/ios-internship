@@ -10,15 +10,17 @@ public class Accountant: Employee {
     // MARK
     // MARK: Initializations
     
-    public override init(name: String, gender: Gender, age: Int, salary: Salary = .value(0.2), bankAccount: Double = 0.0, money: Double = 0) {
-        super.init(name: name, gender: gender, age: age, salary: salary, bankAccount: bankAccount, money: money)
+    public override init(name: String, gender: Gender, salary: Salary = .value(0.2), bankAccount: Double = 0.0, money: Double = 0) {
+        super.init(name: name, gender: gender, salary: salary, bankAccount: bankAccount, money: money)
+        position = "accountant"
     }
     
     // MARK: -
     // MARK: Public functions
     
-    public override func requestEarnings(object: MoneyContainable) {
+    public func action(object: MoneyContainable) {
         distributeEarnings(object: object)
+        message = "My name is \(self.name), I am a \(self.position), I have \(self.bankAccount) on my bank account"
     }
     
     // MARK: -
@@ -29,6 +31,6 @@ public class Accountant: Employee {
         self.bankAccount += object.money * self.salaryCoefficient()
         self.money = object.money - object.money * (self.salaryCoefficient() + object.salaryCoefficient())
         object.money = 0
-        self.delegate?.requestEarnings(object: self)
+        self.delegate?.report(object: self)
     }
 }

@@ -10,7 +10,7 @@ public enum Salary {
     case none
 }
 
-public class Employee: ActionDelegate, MoneyContainable {
+public class Employee: MoneyContainable {
     
     // MARK: -
     // MARK: Public variables
@@ -18,17 +18,18 @@ public class Employee: ActionDelegate, MoneyContainable {
     public var money: Double = 0
     public var name: String
     public var gender: Gender
-    public var age: Int
     public var salary: Salary
     public var bankAccount: Double = 0
+    public var position = String()
+    public var isSuccess = true
+    public var message = String()
     
     // MARK: -
     // MARK: Initializations
     
-    public init(name: String, gender: Gender, age: Int, salary: Salary = .value(0.2), bankAccount: Double = 0.0, money: Double = 0) {
+    public init(name: String, gender: Gender, salary: Salary = .value(0.2), bankAccount: Double = 0.0, money: Double = 0) {
         self.name = name
         self.gender = gender
-        self.age = age
         self.salary = salary
         self.bankAccount = bankAccount
         self.money = money
@@ -36,10 +37,6 @@ public class Employee: ActionDelegate, MoneyContainable {
     
     // MARK: -
     // MARK: Public functions
-    
-    public func requestEarnings(object: MoneyContainable) {
-        fatalError("There is no function implementation in this class")
-    }
     
     public func salaryCoefficient() -> Double {
         switch salary {
@@ -50,7 +47,7 @@ public class Employee: ActionDelegate, MoneyContainable {
         }
     }
     
-    public func balanceInfo() {
-        print("Hello, my name is \(self.name) and I have \(bankAccount) dollars on my bank account!")
+    public func action() {
+        fatalError("This function is not implemented in this class")
     }
 }

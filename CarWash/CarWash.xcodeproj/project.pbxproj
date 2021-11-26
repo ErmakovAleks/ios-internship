@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81C1E8512750C929004D049C /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C1E8502750C929004D049C /* View.swift */; };
 		81EDEAEB274E2BEC00977000 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EDEAEA274E2BEC00977000 /* Queue.swift */; };
 		8458271C274C1A2800AB23EF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458271B274C1A2800AB23EF /* main.swift */; };
 		84582724274C1C4B00AB23EF /* Accountant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84582723274C1C4B00AB23EF /* Accountant.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		81C1E8502750C929004D049C /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		81EDEAEA274E2BEC00977000 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		84582718274C1A2800AB23EF /* CarWash */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CarWash; sourceTree = BUILT_PRODUCTS_DIR; };
 		8458271B274C1A2800AB23EF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -102,9 +104,10 @@
 			isa = PBXGroup;
 			children = (
 				84582729274C1DE300AB23EF /* Car.swift */,
+				849A04432750854D004B4A7A /* Controller.swift */,
 				81EDEAEC274E696200977000 /* Employees */,
 				81EDEAEE274E6A5300977000 /* Buildings */,
-				849A04432750854D004B4A7A /* Controller.swift */,
+				81C1E8502750C929004D049C /* View.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81C1E8512750C929004D049C /* View.swift in Sources */,
 				8458271C274C1A2800AB23EF /* main.swift in Sources */,
 				84E131B5274CA3C800866BA0 /* CarContainable.swift in Sources */,
 				84582739274C221600AB23EF /* ActionDelegate.swift in Sources */,
