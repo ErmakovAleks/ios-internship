@@ -1,5 +1,5 @@
 import Foundation
 
-public protocol ActionDelegate {
+public protocol ActionDelegate: class {
     func report(object: MoneyContainable)
 }

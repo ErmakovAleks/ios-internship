@@ -9,11 +9,7 @@ public struct Queue<T>{
     }
     
     public mutating func extract() -> T? {
-        if array.isEmpty {
-            return nil
-        } else {
-            return array.removeFirst()
-        }
+        !array.isEmpty ? array.removeFirst() : nil
     }
     
     public mutating func clear() {

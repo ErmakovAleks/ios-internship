@@ -5,12 +5,13 @@ public class Accountant: Employee {
     // MARK: -
     // MARK: Public variables
     
-    public var delegate: ActionDelegate?
+    public weak var delegate: ActionDelegate?
     
     // MARK
     // MARK: Initializations
     
-    public override init(name: String, gender: Gender, salary: Salary = .value(0.2), bankAccount: Double = 0.0, money: Double = 0) {
+    public override init(name: String, gender: Gender, salary: Salary = .value(0.2),
+                         bankAccount: Double = 0.0, money: Double = 0) {
         super.init(name: name, gender: gender, salary: salary, bankAccount: bankAccount, money: money)
         position = "accountant"
     }
@@ -20,7 +21,8 @@ public class Accountant: Employee {
     
     public func action(object: MoneyContainable) {
         distributeEarnings(object: object)
-        message = "My name is \(self.name), I am a \(self.position), I have \(self.bankAccount) on my bank account"
+        message = "My name is \(self.name), I am a \(self.position)," +
+         " I have \(self.bankAccount) on my bank account"
     }
     
     // MARK: -
@@ -29,7 +31,8 @@ public class Accountant: Employee {
     private func distributeEarnings(object: MoneyContainable) {
         object.bankAccount += object.money * object.salaryCoefficient()
         self.bankAccount += object.money * self.salaryCoefficient()
-        self.money = object.money - object.money * (self.salaryCoefficient() + object.salaryCoefficient())
+        self.money = object.money - object.money *
+        (self.salaryCoefficient() + object.salaryCoefficient())
         object.money = 0
         self.delegate?.report(object: self)
     }

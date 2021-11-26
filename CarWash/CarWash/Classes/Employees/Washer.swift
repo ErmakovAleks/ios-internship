@@ -5,13 +5,14 @@ public class Washer: Employee {
     // MARK: -
     // MARK: Public variables
     
-    public var delegate: ActionDelegate?
+    public weak var delegate: ActionDelegate?
     public var serviceCost: Double = 20.0
     
     // MARK: -
     // MARK: Initializations
     
-    public override init(name: String, gender: Gender, salary: Salary = .value(0.15), bankAccount: Double = 0.0, money: Double = 0) {
+    public override init(name: String, gender: Gender, salary: Salary = .value(0.15),
+                         bankAccount: Double = 0.0, money: Double = 0) {
         super.init(name: name, gender: gender, salary: salary, bankAccount: bankAccount, money: money)
         position = "washer"
     }
@@ -23,10 +24,11 @@ public class Washer: Employee {
         washing(client: car)
     }
     
-    public func washing(client: Car!) {
+    public func washing(client: Car) {
         if isPermissible(client: client) {
             moneyFromClient(client: client)
-            message = "My name is \(self.name), I am a \(self.position), I have \(self.bankAccount) on my bank account"
+            message = "My name is \(self.name), I am a \(self.position), " +
+            "I have \(self.bankAccount) on my bank account"
             client.cleanness = true
         } else {
             isSuccess = false
