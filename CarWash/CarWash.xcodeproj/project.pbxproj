@@ -19,6 +19,8 @@
 		84582739274C221600AB23EF /* ActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84582738274C221600AB23EF /* ActionDelegate.swift */; };
 		8458273C274C229D00AB23EF /* Washer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458273B274C229D00AB23EF /* Washer.swift */; };
 		8458273F274C22F400AB23EF /* MoneyContanaible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458273E274C22F400AB23EF /* MoneyContanaible.swift */; };
+		849A04442750854D004B4A7A /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A04432750854D004B4A7A /* Controller.swift */; };
+		849A0447275086A7004B4A7A /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A0446275086A7004B4A7A /* FeedbackView.swift */; };
 		84E131B5274CA3C800866BA0 /* CarContainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E131B4274CA3C700866BA0 /* CarContainable.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +50,8 @@
 		84582738274C221600AB23EF /* ActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDelegate.swift; sourceTree = "<group>"; };
 		8458273B274C229D00AB23EF /* Washer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Washer.swift; sourceTree = "<group>"; };
 		8458273E274C22F400AB23EF /* MoneyContanaible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyContanaible.swift; sourceTree = "<group>"; };
+		849A04432750854D004B4A7A /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		849A0446275086A7004B4A7A /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 		84E131B4274CA3C700866BA0 /* CarContainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarContainable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +83,7 @@
 				84E131B4274CA3C700866BA0 /* CarContainable.swift */,
 				8458273E274C22F400AB23EF /* MoneyContanaible.swift */,
 				84582738274C221600AB23EF /* ActionDelegate.swift */,
+				849A0446275086A7004B4A7A /* FeedbackView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -99,6 +104,7 @@
 				84582729274C1DE300AB23EF /* Car.swift */,
 				81EDEAEC274E696200977000 /* Employees */,
 				81EDEAEE274E6A5300977000 /* Buildings */,
+				849A04432750854D004B4A7A /* Controller.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -206,8 +212,10 @@
 				8458272D274C1E2700AB23EF /* Director.swift in Sources */,
 				8458272A274C1DE300AB23EF /* Car.swift in Sources */,
 				8458273F274C22F400AB23EF /* MoneyContanaible.swift in Sources */,
+				849A0447275086A7004B4A7A /* FeedbackView.swift in Sources */,
 				84582733274C217900AB23EF /* Premises.swift in Sources */,
 				84582724274C1C4B00AB23EF /* Accountant.swift in Sources */,
+				849A04442750854D004B4A7A /* Controller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
