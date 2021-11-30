@@ -5,7 +5,7 @@ public class Accountant: Employee {
     // MARK: -
     // MARK: Public variables
     
-    public weak var delegate: ActionDelegate?
+    public var transferMyself: ((Employee) -> Void)?
     
     // MARK
     // MARK: Initializations
@@ -34,6 +34,6 @@ public class Accountant: Employee {
         self.money = object.money - object.money *
         (self.salaryCoefficient() + object.salaryCoefficient())
         object.money = 0
-        self.delegate?.report(object: self)
+        self.transferMyself?(self)
     }
 }

@@ -5,7 +5,7 @@ public class Washer: Employee {
     // MARK: -
     // MARK: Public variables
     
-    public weak var delegate: ActionDelegate?
+    public var transferMyself: ((Employee) -> Void)?
     public var serviceCost: Double = 20.0
     
     // MARK: -
@@ -34,7 +34,7 @@ public class Washer: Employee {
             isSuccess = false
             message = "I'm sorry, you don't have enough money, sir"
         }
-        self.delegate?.report(object: self)
+        self.transferMyself?(self)
     }
     
     // MARK: -

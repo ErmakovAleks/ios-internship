@@ -5,7 +5,7 @@ public class Director: Employee {
     // MARK: -
     // MARK: Public variables
     
-    public weak var delegate: ActionDelegate?
+    public var transferMyself: ((Employee) -> Void)?
     
     // MARK: -
     // MARK: Initializations
@@ -23,7 +23,7 @@ public class Director: Employee {
         takeProfit(object: object)
         message = "My name is \(self.name), I am a \(self.position), " +
         "I have \(self.bankAccount) on my bank account"
-        self.delegate?.report(object: self)
+        self.transferMyself?(self)
     }
     
     public func takeProfit(object: MoneyContainable) {

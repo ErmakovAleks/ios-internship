@@ -1,14 +1,14 @@
 import Foundation
 
-public class Controller: ActionDelegate {
+public class Controller {
     
     // MARK: -
     // MARK: Public variables
     
     let view: FeedbackView
-    let director: Director
-    let accountant: Accountant
-    let washer: Washer
+    var director: Director
+    var accountant: Accountant
+    var washer: Washer
     
     // MARK: -
     // MARK: Initializations
@@ -19,9 +19,15 @@ public class Controller: ActionDelegate {
         self.accountant = accountant
         self.washer = washer
         
-        director.delegate = self
-        accountant.delegate = self
-        washer.delegate = self
+        director.transferMyself = { obj in
+            self.director = obj as! Director
+        }
+        accountant.transferMyself = { obj in
+            self.accountant = obj as! Accountant
+        }
+        washer.transferMyself = { obj in
+            self.washer = obj as! Washer
+        }
     }
     
     // MARK: -
