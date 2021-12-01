@@ -6,6 +6,8 @@ public class Controller {
     // MARK: Public variables
     
     let view: FeedbackView
+    let adminBuilding: Building
+    let washingBuilding: Building
     var director: Director
     var accountant: Accountant
     var washer: Washer
@@ -13,20 +15,21 @@ public class Controller {
     // MARK: -
     // MARK: Initializations
     
-    init(view: FeedbackView, director: Director, accountant: Accountant, washer: Washer) {
+    init(view: FeedbackView, adminBuilding: Building, washingBuilding: Building) {
         self.view = view
-        self.director = director
-        self.accountant = accountant
-        self.washer = washer
+        //self.director = director
+        //self.accountant = accountant
+        //self.washer = washer
+        self.director = adminBuilding.rooms[0].employees.extract()
         
-        director.transferMyself = { obj in
-            self.director = obj as! Director
+        director.didFinishWork = { [weak self] worker in
+            self?.report(object: worker)
         }
-        accountant.transferMyself = { obj in
-            self.accountant = obj as! Accountant
+        accountant.didFinishWork = { [weak self] worker in
+            self?.report(object: worker)
         }
-        washer.transferMyself = { obj in
-            self.washer = obj as! Washer
+        washer.didFinishWork = { [weak self] worker in
+            self?.report(object: worker)
         }
     }
     

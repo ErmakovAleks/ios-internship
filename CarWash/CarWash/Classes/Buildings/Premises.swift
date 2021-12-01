@@ -11,10 +11,10 @@ public class Premises: Room, CarContainable {
     // MARK: -
     // MARK: Initializations
     
-    public init(humanCapacity: Int = 1, employees: [Employee], carCapacity: Int = 1) {
+    public init(humanCapacity: Int = 4/*, employees: [Employee]*/, carCapacity: Int = 1) {
         self.carCapacity = carCapacity
         self.cars = Queue()
         
-        super.init(humanCapacity: humanCapacity, employees: employees)
+        super.init(humanCapacity: humanCapacity/*, employees: employees*/)
     }
 }

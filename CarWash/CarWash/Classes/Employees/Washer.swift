@@ -5,7 +5,7 @@ public class Washer: Employee {
     // MARK: -
     // MARK: Public variables
     
-    public var transferMyself: ((Employee) -> Void)?
+    public var didFinishWork: ((Washer) -> ())?
     public var serviceCost: Double = 20.0
     
     // MARK: -
@@ -34,7 +34,7 @@ public class Washer: Employee {
             isSuccess = false
             message = "I'm sorry, you don't have enough money, sir"
         }
-        self.transferMyself?(self)
+        self.didFinishWork!(self)
     }
     
     // MARK: -

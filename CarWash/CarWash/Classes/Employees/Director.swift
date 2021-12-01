@@ -5,7 +5,7 @@ public class Director: Employee {
     // MARK: -
     // MARK: Public variables
     
-    public var transferMyself: ((Employee) -> Void)?
+    public var didFinishWork: ((Director) -> ())?
     
     // MARK: -
     // MARK: Initializations
@@ -23,7 +23,7 @@ public class Director: Employee {
         takeProfit(object: object)
         message = "My name is \(self.name), I am a \(self.position), " +
         "I have \(self.bankAccount) on my bank account"
-        self.transferMyself?(self)
+        self.didFinishWork!(self)
     }
     
     public func takeProfit(object: MoneyContainable) {

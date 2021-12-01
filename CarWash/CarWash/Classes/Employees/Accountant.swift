@@ -5,7 +5,7 @@ public class Accountant: Employee {
     // MARK: -
     // MARK: Public variables
     
-    public var transferMyself: ((Employee) -> Void)?
+    public var didFinishWork: ((Accountant) -> ())?
     
     // MARK
     // MARK: Initializations
@@ -23,6 +23,7 @@ public class Accountant: Employee {
         distributeEarnings(object: object)
         message = "My name is \(self.name), I am a \(self.position)," +
          " I have \(self.bankAccount) on my bank account"
+        self.didFinishWork?(self)
     }
     
     // MARK: -
@@ -34,6 +35,5 @@ public class Accountant: Employee {
         self.money = object.money - object.money *
         (self.salaryCoefficient() + object.salaryCoefficient())
         object.money = 0
-        self.transferMyself?(self)
     }
 }
