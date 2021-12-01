@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81917E9227575BCB0084C5C5 /* DirectorContainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81917E9127575BCB0084C5C5 /* DirectorContainable.swift */; };
+		81917E9427576B1A0084C5C5 /* AdminBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81917E9327576B1A0084C5C5 /* AdminBuilding.swift */; };
+		81917E96275772B50084C5C5 /* WashingBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81917E95275772B50084C5C5 /* WashingBuilding.swift */; };
+		81917E98275773240084C5C5 /* CarWashComplex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81917E97275773240084C5C5 /* CarWashComplex.swift */; };
 		81C1E8512750C929004D049C /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C1E8502750C929004D049C /* View.swift */; };
 		81EDEAEB274E2BEC00977000 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EDEAEA274E2BEC00977000 /* Queue.swift */; };
 		8400A63427572ADF000E35A1 /* Cabinet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8400A63327572ADF000E35A1 /* Cabinet.swift */; };
@@ -39,6 +43,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		81917E9127575BCB0084C5C5 /* DirectorContainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorContainable.swift; sourceTree = "<group>"; };
+		81917E9327576B1A0084C5C5 /* AdminBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminBuilding.swift; sourceTree = "<group>"; };
+		81917E95275772B50084C5C5 /* WashingBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WashingBuilding.swift; sourceTree = "<group>"; };
+		81917E97275773240084C5C5 /* CarWashComplex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarWashComplex.swift; sourceTree = "<group>"; };
 		81C1E8502750C929004D049C /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		81EDEAEA274E2BEC00977000 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		8400A63327572ADF000E35A1 /* Cabinet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cabinet.swift; sourceTree = "<group>"; };
@@ -88,6 +96,7 @@
 				8458273E274C22F400AB23EF /* MoneyContanaible.swift */,
 				84582738274C221600AB23EF /* ActionDelegate.swift */,
 				849A0446275086A7004B4A7A /* FeedbackView.swift */,
+				81917E9127575BCB0084C5C5 /* DirectorContainable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -99,6 +108,9 @@
 				84582732274C217900AB23EF /* Premises.swift */,
 				84582735274C21C300AB23EF /* Room.swift */,
 				8400A63327572ADF000E35A1 /* Cabinet.swift */,
+				81917E9327576B1A0084C5C5 /* AdminBuilding.swift */,
+				81917E95275772B50084C5C5 /* WashingBuilding.swift */,
+				81917E97275773240084C5C5 /* CarWashComplex.swift */,
 			);
 			path = Buildings;
 			sourceTree = "<group>";
@@ -209,6 +221,7 @@
 			files = (
 				81C1E8512750C929004D049C /* View.swift in Sources */,
 				8458271C274C1A2800AB23EF /* main.swift in Sources */,
+				81917E9227575BCB0084C5C5 /* DirectorContainable.swift in Sources */,
 				84E131B5274CA3C800866BA0 /* CarContainable.swift in Sources */,
 				84582739274C221600AB23EF /* ActionDelegate.swift in Sources */,
 				84582730274C20EE00AB23EF /* Employee.swift in Sources */,
@@ -218,12 +231,15 @@
 				8400A63427572ADF000E35A1 /* Cabinet.swift in Sources */,
 				84582727274C1C8200AB23EF /* Building.swift in Sources */,
 				8458272D274C1E2700AB23EF /* Director.swift in Sources */,
+				81917E9427576B1A0084C5C5 /* AdminBuilding.swift in Sources */,
 				8458272A274C1DE300AB23EF /* Car.swift in Sources */,
 				8458273F274C22F400AB23EF /* MoneyContanaible.swift in Sources */,
 				849A0447275086A7004B4A7A /* FeedbackView.swift in Sources */,
 				84582733274C217900AB23EF /* Premises.swift in Sources */,
 				84582724274C1C4B00AB23EF /* Accountant.swift in Sources */,
 				849A04442750854D004B4A7A /* Controller.swift in Sources */,
+				81917E98275773240084C5C5 /* CarWashComplex.swift in Sources */,
+				81917E96275772B50084C5C5 /* WashingBuilding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

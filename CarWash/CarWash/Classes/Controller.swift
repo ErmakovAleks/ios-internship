@@ -15,16 +15,17 @@ public class Controller {
     // MARK: -
     // MARK: Initializations
     
-    init(view: FeedbackView, adminBuilding: Building, washingBuilding: Building) {
+    init(view: FeedbackView, complex: CarWashComplex) {
         self.view = view
         //self.director = director
         //self.accountant = accountant
         //self.washer = washer
-        self.director = adminBuilding.rooms[0].employees.extract()
+        self.director = complex.adminBuilding.director
         
-        director.didFinishWork = { [weak self] worker in
+        director?.didFinishWork = { [weak self] worker in
             self?.report(object: worker)
         }
+        
         accountant.didFinishWork = { [weak self] worker in
             self?.report(object: worker)
         }
@@ -54,9 +55,9 @@ public class Controller {
             }
         } else if object is Accountant {
             view.show(message: accountant.message)
-            director.action(object: accountant)
+            director!.action(object: accountant)
         } else if object is Director {
-            view.show(message: director.message)
+            view.show(message: director.message ?? "")
         }
     }
 }

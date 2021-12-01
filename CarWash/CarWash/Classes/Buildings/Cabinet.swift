@@ -5,16 +5,20 @@ public class Cabinet: Room {
     // MARK: -
     // MARK: Public variables
     
-    public var director: Director
-    public var accountant: Accountant
+    public var employees: Queue<Employee?>
+    public var director: Director!
     
     // MARK: -
     // MARK: Initializations
     
-    public override init(humanCapacity: Int = 4) {
-        self.director = employees.extract() as! Director
-        self.accountant = employees.extract() as! Accountant
-        
-        super.init(humanCapacity: humanCapacity)
+    public init(directorName: String, directorGender: Gender) {
+        self.director?.name = directorName
+        self.director?.gender = directorGender
+        self.employees = Queue()
+    }
+    
+    public init(director: Director) {
+        self.director = director
+        self.employees = Queue()
     }
 }

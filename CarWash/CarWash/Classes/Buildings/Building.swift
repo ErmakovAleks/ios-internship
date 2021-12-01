@@ -1,16 +1,7 @@
 import Foundation
 
-public class Building {
+public protocol Building {
     
-    // MARK: -
-    // MARK: Public variables
+    var rooms: [AnyObject] { get set }
     
-    public var rooms: [Room]
-    
-    // MARK: -
-    // MARK: Initializations
-    
-    init(rooms: [Room]) {
-        self.rooms = rooms
-    }
 }

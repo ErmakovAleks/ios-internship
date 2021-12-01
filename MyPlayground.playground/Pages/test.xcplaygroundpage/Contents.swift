@@ -26,9 +26,3 @@ print(inc())
 
 var a = 14
 var b = 2
- 
-let myClosure: (Int, Int) -> Int = { + }
-print(myClosure(a, b))
- 
-a = 5
-b = 6
