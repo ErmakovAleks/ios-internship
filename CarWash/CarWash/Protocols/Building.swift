@@ -2,6 +2,6 @@ import Foundation
 
 public protocol Building {
     
-    var rooms: [AnyObject] { get set }
+    var rooms: [Room] { get set }
     
 }

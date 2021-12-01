@@ -1,7 +1,7 @@
 import Foundation
 
 public class AdminBuilding: Building {
-    public var rooms: [AnyObject]
+    public var rooms: [Room]
     public var director: Director?
 
     init(rooms: [Cabinet]) {

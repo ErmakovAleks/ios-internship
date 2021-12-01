@@ -92,6 +92,8 @@
 		81EDEAED274E69F100977000 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				84582726274C1C8200AB23EF /* Building.swift */,
+				84582735274C21C300AB23EF /* Room.swift */,
 				84E131B4274CA3C700866BA0 /* CarContainable.swift */,
 				8458273E274C22F400AB23EF /* MoneyContanaible.swift */,
 				84582738274C221600AB23EF /* ActionDelegate.swift */,
@@ -104,9 +106,7 @@
 		81EDEAEE274E6A5300977000 /* Buildings */ = {
 			isa = PBXGroup;
 			children = (
-				84582726274C1C8200AB23EF /* Building.swift */,
 				84582732274C217900AB23EF /* Premises.swift */,
-				84582735274C21C300AB23EF /* Room.swift */,
 				8400A63327572ADF000E35A1 /* Cabinet.swift */,
 				81917E9327576B1A0084C5C5 /* AdminBuilding.swift */,
 				81917E95275772B50084C5C5 /* WashingBuilding.swift */,
