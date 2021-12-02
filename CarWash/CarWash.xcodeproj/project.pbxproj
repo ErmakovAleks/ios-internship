@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		81917E9227575BCB0084C5C5 /* DirectorContainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81917E9127575BCB0084C5C5 /* DirectorContainable.swift */; };
 		81917E9427576B1A0084C5C5 /* AdminBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81917E9327576B1A0084C5C5 /* AdminBuilding.swift */; };
 		81917E96275772B50084C5C5 /* WashingBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81917E95275772B50084C5C5 /* WashingBuilding.swift */; };
 		81917E98275773240084C5C5 /* CarWashComplex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81917E97275773240084C5C5 /* CarWashComplex.swift */; };
@@ -16,7 +15,6 @@
 		8400A63427572ADF000E35A1 /* Cabinet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8400A63327572ADF000E35A1 /* Cabinet.swift */; };
 		8458271C274C1A2800AB23EF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458271B274C1A2800AB23EF /* main.swift */; };
 		84582724274C1C4B00AB23EF /* Accountant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84582723274C1C4B00AB23EF /* Accountant.swift */; };
-		84582727274C1C8200AB23EF /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84582726274C1C8200AB23EF /* Building.swift */; };
 		8458272A274C1DE300AB23EF /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84582729274C1DE300AB23EF /* Car.swift */; };
 		8458272D274C1E2700AB23EF /* Director.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458272C274C1E2700AB23EF /* Director.swift */; };
 		84582730274C20EE00AB23EF /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458272F274C20EE00AB23EF /* Employee.swift */; };
@@ -27,7 +25,6 @@
 		8458273F274C22F400AB23EF /* MoneyContanaible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458273E274C22F400AB23EF /* MoneyContanaible.swift */; };
 		849A04442750854D004B4A7A /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A04432750854D004B4A7A /* Controller.swift */; };
 		849A0447275086A7004B4A7A /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A0446275086A7004B4A7A /* FeedbackView.swift */; };
-		84E131B5274CA3C800866BA0 /* CarContainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E131B4274CA3C700866BA0 /* CarContainable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,7 +40,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		81917E9127575BCB0084C5C5 /* DirectorContainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorContainable.swift; sourceTree = "<group>"; };
 		81917E9327576B1A0084C5C5 /* AdminBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminBuilding.swift; sourceTree = "<group>"; };
 		81917E95275772B50084C5C5 /* WashingBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WashingBuilding.swift; sourceTree = "<group>"; };
 		81917E97275773240084C5C5 /* CarWashComplex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarWashComplex.swift; sourceTree = "<group>"; };
@@ -53,7 +49,6 @@
 		84582718274C1A2800AB23EF /* CarWash */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CarWash; sourceTree = BUILT_PRODUCTS_DIR; };
 		8458271B274C1A2800AB23EF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		84582723274C1C4B00AB23EF /* Accountant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accountant.swift; sourceTree = "<group>"; };
-		84582726274C1C8200AB23EF /* Building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
 		84582729274C1DE300AB23EF /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		8458272C274C1E2700AB23EF /* Director.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Director.swift; sourceTree = "<group>"; };
 		8458272F274C20EE00AB23EF /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
@@ -64,7 +59,6 @@
 		8458273E274C22F400AB23EF /* MoneyContanaible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyContanaible.swift; sourceTree = "<group>"; };
 		849A04432750854D004B4A7A /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		849A0446275086A7004B4A7A /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
-		84E131B4274CA3C700866BA0 /* CarContainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarContainable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,13 +86,10 @@
 		81EDEAED274E69F100977000 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				84582726274C1C8200AB23EF /* Building.swift */,
 				84582735274C21C300AB23EF /* Room.swift */,
-				84E131B4274CA3C700866BA0 /* CarContainable.swift */,
 				8458273E274C22F400AB23EF /* MoneyContanaible.swift */,
 				84582738274C221600AB23EF /* ActionDelegate.swift */,
 				849A0446275086A7004B4A7A /* FeedbackView.swift */,
-				81917E9127575BCB0084C5C5 /* DirectorContainable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -221,15 +212,12 @@
 			files = (
 				81C1E8512750C929004D049C /* View.swift in Sources */,
 				8458271C274C1A2800AB23EF /* main.swift in Sources */,
-				81917E9227575BCB0084C5C5 /* DirectorContainable.swift in Sources */,
-				84E131B5274CA3C800866BA0 /* CarContainable.swift in Sources */,
 				84582739274C221600AB23EF /* ActionDelegate.swift in Sources */,
 				84582730274C20EE00AB23EF /* Employee.swift in Sources */,
 				81EDEAEB274E2BEC00977000 /* Queue.swift in Sources */,
 				8458273C274C229D00AB23EF /* Washer.swift in Sources */,
 				84582736274C21C300AB23EF /* Room.swift in Sources */,
 				8400A63427572ADF000E35A1 /* Cabinet.swift in Sources */,
-				84582727274C1C8200AB23EF /* Building.swift in Sources */,
 				8458272D274C1E2700AB23EF /* Director.swift in Sources */,
 				81917E9427576B1A0084C5C5 /* AdminBuilding.swift in Sources */,
 				8458272A274C1DE300AB23EF /* Car.swift in Sources */,

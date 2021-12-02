@@ -10,9 +10,17 @@ public class Director: Employee {
     // MARK: -
     // MARK: Initializations
     
-    public override init(name: String, gender: Gender, salary: Salary = .none,
-                         bankAccount: Double = 0.0, money: Double = 0) {
-        super.init(name: name, gender: gender, salary: salary, bankAccount: bankAccount, money: money)
+    public override init(name: String,
+                         gender: Gender,
+                         salary: Salary = .none,
+                         bankAccount: Double = 0.0,
+                         money: Double = 0)
+    {
+        super.init(name: name,
+                   gender: gender,
+                   salary: salary,
+                   bankAccount: bankAccount,
+                   money: money)
         position = "director"
     }
     

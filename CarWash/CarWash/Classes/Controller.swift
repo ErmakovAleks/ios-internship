@@ -6,8 +6,8 @@ public class Controller {
     // MARK: Public variables
     
     let view: FeedbackView
-    let adminBuilding: Building
-    let washingBuilding: Building
+    let adminBuilding: AdminBuilding
+    let washingBuilding: WashingBuilding
     var director: Director?
     var accountant: Accountant?
     var washer: Washer?
@@ -39,8 +39,9 @@ public class Controller {
     // MARK: Public functions
     
     public func checkQueue() {
-        if (complex.washingBuilding.cars != nil) && washer!.isSuccess {
-            washer!.action(car: complex.washingBuilding.cars?.extract() as? Car)
+        if !(complex.washingBuilding.rooms.isEmpty) &&
+        !(complex.washingBuilding.rooms[0].cars.isEmpty) {
+            washer!.action(car: complex.washingBuilding.rooms[0].cars.extract() as! Car)
         } else {
             print("There are no cars in the queue, sir!")
         }

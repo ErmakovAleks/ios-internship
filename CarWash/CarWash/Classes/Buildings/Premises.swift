@@ -1,6 +1,6 @@
 import Foundation
 
-public class Premises: Room, CarContainable {
+public class Premises: Room {
 
     // MARK: -
     // MARK: Public variables

@@ -10,9 +10,17 @@ public class Accountant: Employee {
     // MARK
     // MARK: Initializations
     
-    public override init(name: String, gender: Gender, salary: Salary = .value(0.2),
-                         bankAccount: Double = 0.0, money: Double = 0) {
-        super.init(name: name, gender: gender, salary: salary, bankAccount: bankAccount, money: money)
+    public override init(name: String,
+                         gender: Gender,
+                         salary: Salary = .value(0.2),
+                         bankAccount: Double = 0.0,
+                         money: Double = 0)
+    {
+        super.init(name: name,
+                   gender: gender,
+                   salary: salary,
+                   bankAccount: bankAccount,
+                   money: money)
         position = "accountant"
     }
     

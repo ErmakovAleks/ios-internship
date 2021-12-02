@@ -17,7 +17,6 @@ let adminBuilding = AdminBuilding(rooms: [adminCabinet])
 let complex = CarWashComplex(adminBuilding: adminBuilding, washingBuilding: washingBuilding)
 
 let view = View()
-//let controller = Controller(view: view, director: ringo, accountant: paul, washer: john)
 let controller = Controller(view: view, complex: complex)
 
 while(true) {
