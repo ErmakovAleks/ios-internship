@@ -59,8 +59,8 @@ public class Controller {
             view.show(message: accountant!.message)
             director?.action(object: accountant!)
         } else if object is Director {
-            if director != nil {
-                view.show(message: director!.message)
+            director.map {
+                view.show(message: $0.message)
             }
         }
     }
