@@ -28,19 +28,26 @@ public class Washer: Employee {
     // MARK: -
     // MARK: Public functions
     
-    public func action(car: Car!) {
+    public func action(car: Car?) {
         washing(client: car)
     }
     
-    public func washing(client: Car) {
-        if isPermissible(client: client) {
-            moneyFromClient(client: client)
-            message = "My name is \(self.name), I am a \(self.position), " +
-            "I have \(self.bankAccount) on my bank account"
-            client.cleanness = true
+    public func washing(client: Car?) {
+        if let client = client {
+            if isPermissible(client: client) {
+                moneyFromClient(client: client)
+                message = "My name is \(self.name), I am a \(self.position), " +
+                "I have \(self.bankAccount) on my bank account"
+                client.cleanness = true
+            } else {
+                isSuccess = false
+                message = "I'm sorry, you don't have enough money, sir"
+            }
         } else {
-            isSuccess = false
-            message = "I'm sorry, you don't have enough money, sir"
+            message = "No cars in the car wash sir"
+        }
+        let timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { _ in
+            print("aaa")
         }
         self.didFinishWork!(self)
     }

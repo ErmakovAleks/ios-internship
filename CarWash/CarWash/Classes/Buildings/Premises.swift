@@ -5,8 +5,8 @@ public class Premises: Room {
     // MARK: -
     // MARK: Public variables
     
-    public var employees: Queue<Employee?>
-    public var cars: Queue<Car?>
+    public var employees: Queue<Employee>
+    public var cars: Queue<Car>
     
     // MARK: -
     // MARK: Initializations

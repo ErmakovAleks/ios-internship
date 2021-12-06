@@ -5,7 +5,7 @@ public class Cabinet: Room {
     // MARK: -
     // MARK: Public variables
     
-    public var employees: Queue<Employee?>
+    public var employees: Queue<Employee>
     public var director: Director!
     
     // MARK: -

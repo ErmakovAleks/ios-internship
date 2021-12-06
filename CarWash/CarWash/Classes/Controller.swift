@@ -30,6 +30,7 @@ public class Controller {
         accountant?.didFinishWork = { [weak self] worker in
             self?.report(object: worker)
         }
+        
         washer?.didFinishWork = { [weak self] worker in
             self?.report(object: worker)
         }
@@ -39,25 +40,24 @@ public class Controller {
     // MARK: Public functions
     
     public func checkQueue() {
-        if !(complex.washingBuilding.rooms.isEmpty) &&
-        !(complex.washingBuilding.rooms[0].cars.isEmpty) {
-            washer!.action(car: complex.washingBuilding.rooms[0].cars.extract() as! Car)
-        } else {
-            print("There are no cars in the queue, sir!")
+        if let washer = washer {
+            if !complex.washingBuilding.rooms[0].cars.isEmpty {
+                washer.action(car: complex.washingBuilding.rooms[0].cars.extract())
+            }
         }
     }
     
     public func report(object: MoneyContainable) {
         if object is Washer {
-            view.show(message: washer!.message)
+            view.show(message: object.message)
             if object.isSuccess {
-                accountant?.action(object: washer!)
+                accountant?.action(object: object)
             } else {
                 object.isSuccess = true
             }
         } else if object is Accountant {
-            view.show(message: accountant!.message)
-            director?.action(object: accountant!)
+            view.show(message: object.message)
+            director?.action(object: object)
         } else if object is Director {
             director.map {
                 view.show(message: $0.message)
