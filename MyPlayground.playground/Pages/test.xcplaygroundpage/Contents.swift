@@ -1,4 +1,5 @@
 import Foundation
+import PlaygroundSupport
 
 //let queue = DispatchQueue(label: "", qos: .background, attributes: [.concurrent])
 //
@@ -32,10 +33,13 @@ import Foundation
 let array = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 var i = 0
 print("Start!")
-    let timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { _ in
+    let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
         print(array[i])
         i += 1
         if i == array.count {
             timer.invalidate()
         }
     }
+DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+    print("Finish!")
+}
