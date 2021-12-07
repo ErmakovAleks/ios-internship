@@ -1,7 +1,7 @@
 import Foundation
 import PlaygroundSupport
 
-//let queue = DispatchQueue(label: "", qos: .background, attributes: [.concurrent])
+//let queue = DispatchQueue(label: "", qos: .utility, attributes: [.concurrent])
 //
 //let mas = Array(0..<10000)
 //let res = mas.reduce(0, +)
@@ -30,16 +30,37 @@ import PlaygroundSupport
 //    print("res2 = \(res2)")
 //}
 
-let array = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-var i = 0
-print("Start!")
-    let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-        print(array[i])
-        i += 1
-        if i == array.count {
-            timer.invalidate()
+class TestTimer {
+
+    typealias Handler = () -> ()
+
+    private let handler: Handler
+    private let queue: DispatchQueue
+
+    init(handler: @escaping Handler, queue: DispatchQueue?) {
+        self.queue = DispatchQueue.global(qos: .background)
+        self.handler = handler
+
+        self.start()
+    }
+
+    private func start() {
+        self.queue.asyncAfter(deadline: .now() + 1) {
+            self.handler()
         }
     }
-DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-    print("Finish!")
 }
+
+let queue = DispatchQueue(label: "")
+let array = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+
+func iterations() {
+    for i in 0..<array.count {
+        print(array[i])
+    }
+}
+
+
+print("Start!")
+let testTimer = TestTimer(handler: iterations, queue: queue)
+print("Finish!")

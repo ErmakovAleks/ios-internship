@@ -7,6 +7,7 @@ public class Washer: Employee {
     
     public var didFinishWork: ((Washer) -> ())?
     public var serviceCost: Double = 20.0
+    private let queue = DispatchQueue(label: "", qos: .background)
     
     // MARK: -
     // MARK: Initializations
@@ -46,10 +47,17 @@ public class Washer: Employee {
         } else {
             message = "No cars in the car wash sir"
         }
-        let timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { _ in
-            print("aaa")
+//        queue.async {
+//            DispatchQueue.main.async {
+//                self.didFinishWork!(self)
+//            }
+//        }
+        queue.async {
+            let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+                self.didFinishWork!(self)
+            }
         }
-        self.didFinishWork!(self)
+        //self.didFinishWork!(self)
     }
     
     // MARK: -

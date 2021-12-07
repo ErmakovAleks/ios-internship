@@ -53,12 +53,7 @@ public class Controller {
         if object is Washer {
             view.show(message: object.message)
             if object.isSuccess {
-                queue.sync {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                        self.accountant?.action(object: object)
-                    }
-                }
-                //accountant?.action(object: object)
+                accountant?.action(object: object)
             } else {
                 object.isSuccess = true
             }
