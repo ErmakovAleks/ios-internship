@@ -43,9 +43,7 @@ public class Controller {
     
     public func checkQueue() {
         if let washer = washer {
-            if !complex.washingBuilding.rooms[0].cars.isEmpty {
-                washer.action(car: complex.washingBuilding.rooms[0].cars.extract())
-            }
+            washer.action(car: complex.washingBuilding.rooms[0].cars.extract())
         }
     }
     

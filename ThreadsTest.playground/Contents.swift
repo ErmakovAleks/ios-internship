@@ -23,7 +23,7 @@ class TestTimer {
 }
 
 let queue = DispatchQueue(label: "")
-let array = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+let array = [0, 10, 20, 30]
 
 func iterations() {
     for i in 0..<array.count {
@@ -31,10 +31,16 @@ func iterations() {
     }
 }
 
+func finish() {
+    queue.asyncAfter(deadline: .now() + 2, qos: .background) {
+        print("Finish!")
+    }
+}
+
 
 print("Start!")
-for _ in 0..<3 {
-    let testTimer = TestTimer(handler: iterations, queue: queue)
+queue.asyncAfter(deadline: .now() + 1) {
+    iterations()
+    finish()
 }
-print("Finish!")
 

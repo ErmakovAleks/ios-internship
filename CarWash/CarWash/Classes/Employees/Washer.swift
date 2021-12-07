@@ -47,17 +47,7 @@ public class Washer: Employee {
         } else {
             message = "No cars in the car wash sir"
         }
-//        queue.async {
-//            DispatchQueue.main.async {
-//                self.didFinishWork!(self)
-//            }
-//        }
-        queue.async {
-            let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
-                self.didFinishWork!(self)
-            }
-        }
-        //self.didFinishWork!(self)
+        self.didFinishWork!(self)
     }
     
     // MARK: -
