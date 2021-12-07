@@ -16,13 +16,13 @@ class TestTimer {
     }
 
     private func start() {
-        self.queue.asyncAfter(deadline: .now() + 5) {
+        self.queue.asyncAfter(deadline: .now() + 1) {
             self.handler()
         }
     }
 }
 
-let queue = DispatchQueue(label: "customQueue")
+let queue = DispatchQueue(label: "")
 let array = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
 func iterations() {
@@ -31,11 +31,10 @@ func iterations() {
     }
 }
 
-print("Start!")
 
-for _ in 1...3 {
+print("Start!")
+for _ in 0..<3 {
     let testTimer = TestTimer(handler: iterations, queue: queue)
 }
-
 print("Finish!")
 
