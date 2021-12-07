@@ -62,5 +62,7 @@ func iterations() {
 
 
 print("Start!")
-let testTimer = TestTimer(handler: iterations, queue: queue)
+for i in 0..<array.count {
+    let testTimer = TestTimer(handler: iterations, queue: queue)
+}
 print("Finish!")
