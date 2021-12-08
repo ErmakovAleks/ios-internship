@@ -30,7 +30,7 @@ public class Washer: Employee {
     // MARK: Public functions
     
     public func action(car: Car?) {
-        queue.asyncAfter(deadline: .now() + 1) {
+        queue.asyncAfter(deadline: .now() + 3) {
             self.washing(client: car)
         }
     }

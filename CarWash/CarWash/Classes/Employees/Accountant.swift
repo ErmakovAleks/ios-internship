@@ -6,6 +6,7 @@ public class Accountant: Employee {
     // MARK: Public variables
     
     public var didFinishWork: ((Accountant) -> ())?
+    private let queue = DispatchQueue(label: "", qos: .background)
     
     // MARK
     // MARK: Initializations
@@ -28,10 +29,12 @@ public class Accountant: Employee {
     // MARK: Public functions
     
     public func action(object: MoneyContainable) {
-        distributeEarnings(object: object)
-        message = "My name is \(self.name), I am a \(self.position)," +
-         " I have \(self.bankAccount) on my bank account"
-        self.didFinishWork?(self)
+        queue.asyncAfter(deadline: .now() + 1) {
+            self.distributeEarnings(object: object)
+            self.message = "My name is \(self.name), I am a \(self.position)," +
+            " I have \(self.bankAccount) on my bank account"
+            self.didFinishWork?(self)
+        }
     }
     
     // MARK: -
