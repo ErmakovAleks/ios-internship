@@ -12,44 +12,44 @@ public class Washer: Employee {
     // MARK: -
     // MARK: Initializations
     
-    public override init(name: String,
-                         gender: Gender,
-                         salary: Salary = .value(0.15),
-                         bankAccount: Double = 0.0,
-                         money: Double = 0)
-    {
-        super.init(name: name,
-                   gender: gender,
-                   salary: salary,
-                   bankAccount: bankAccount,
-                   money: money)
+    public override init(
+        name: String,
+        gender: Gender,
+        salary: Salary = .coefficient(0.15),
+        bankAccount: Double = 0.0,
+        money: Double = 0
+    ){
+        super.init(
+            name: name,
+            gender: gender,
+            salary: salary,
+            bankAccount: bankAccount,
+            money: money
+        )
         position = "washer"
     }
     
     // MARK: -
     // MARK: Public functions
     
-    public func action(car: Car?) {
+    public func action(car: Car) {
         queue.asyncAfter(deadline: .now() + 3) {
             self.washing(client: car)
         }
     }
     
-    public func washing(client: Car?) {
-        if let client = client {
-            if isPermissible(client: client) {
-                moneyFromClient(client: client)
-                message = "My name is \(self.name), I am a \(self.position), " +
-                "I have \(self.bankAccount) on my bank account"
-                client.cleanness = true
-            } else {
-                isSuccess = false
-                message = "I'm sorry, you don't have enough money, sir"
-            }
+    public func washing(client: Car) {
+        if isPermissible(client: client) {
+            moneyFromClient(client: client)
+            message = "My name is \(self.name), I am a \(self.position), " +
+            "I have \(self.bankAccount) on my bank account"
+            client.cleanness = true
         } else {
-            message = "No cars in the car wash sir"
+            isSuccess = false
+            message = "I'm sorry, you don't have enough money, sir"
         }
-        self.didFinishWork!(self)
+        print(self.message)
+        self.didFinishWork?(self)
     }
     
     // MARK: -

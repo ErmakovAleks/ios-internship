@@ -6,7 +6,7 @@ public enum Gender {
 }
 
 public enum Salary {
-    case value(Double)
+    case coefficient(Double)
     case none
 }
 
@@ -27,12 +27,13 @@ public class Employee: MoneyContainable {
     // MARK: -
     // MARK: Initializations
     
-    public init(name: String,
-                gender: Gender,
-                salary: Salary = .value(0.2),
-                bankAccount: Double = 0.0,
-                money: Double = 0)
-    {
+    public init(
+        name: String,
+        gender: Gender,
+        salary: Salary = .coefficient(0.2),
+        bankAccount: Double = 0.0,
+        money: Double = 0
+    ){
         self.name = name
         self.gender = gender
         self.salary = salary
@@ -47,7 +48,7 @@ public class Employee: MoneyContainable {
         switch salary {
         case .none:
             return 1.0
-        case let .value(doubleValue):
+        case let .coefficient(doubleValue):
             return doubleValue
         }
     }
