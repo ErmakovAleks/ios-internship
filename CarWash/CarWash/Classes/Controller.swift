@@ -15,7 +15,7 @@ public class Controller {
     
     var accountants: [Accountant]
     var washers: [Washer]
-    var cars: [Car]?
+    var cars: [Car] = []
     let queue = DispatchQueue(label: "")
     
     // MARK: -
@@ -57,23 +57,20 @@ public class Controller {
     
     public func checkQueue() {
         
-        self.cars = []
+        var freeWashers = self.washers.filter { $0.isSuccess }
+        print(freeWashers.count)
+        var cars = complex.washingBuilding.rooms.flatMap { $0.cars }
         
         complex.washingBuilding.rooms.forEach { room in
-            cars? += room.cars.compactMap { $0 }
             room.cars.removeAll()
         }
- 
-        if var cars = cars {
-            if !washers.isEmpty && !cars.isEmpty {
-                washer = washers.removeFirst()
-                let car = cars.removeFirst()
-                queue.asyncAfter(deadline: .now() + 1) {
-                    self.washer?.action(car: car)
-                    if let washer = self.washer {
-                        self.washers.append(washer)
-                    }
-                }
+        print("carsCount = \(cars.count)")
+        
+        let washer = freeWashers.removeFirst()
+        queue.asyncAfter(deadline: .now() + 1) {
+            self.washer?.action(car: cars.removeFirst())
+            if let washer = self.washer {
+                self.washers.append(washer)
             }
         }
     }
