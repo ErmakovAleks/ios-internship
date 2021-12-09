@@ -33,9 +33,7 @@ public class Washer: Employee {
     // MARK: Public functions
     
     public func action(car: Car) {
-        queue.asyncAfter(deadline: .now() + 3) {
             self.washing(client: car)
-        }
     }
     
     public func washing(client: Car) {
@@ -48,8 +46,6 @@ public class Washer: Employee {
             isSuccess = false
             message = "I'm sorry, you don't have enough money, sir"
         }
-        print(message)
-        print(client.money)
         self.didFinishWork?(self)
     }
     

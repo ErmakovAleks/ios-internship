@@ -32,12 +32,12 @@ public class Accountant: Employee {
     // MARK: Public functions
     
     public func action(object: MoneyContainable) {
-        queue.asyncAfter(deadline: .now() + 1) {
+        //queue.asyncAfter(deadline: .now() + 1) {
             self.distributeEarnings(object: object)
             self.message = "My name is \(self.name), I am a \(self.position)," +
             " I have \(self.bankAccount) on my bank account"
             self.didFinishWork?(self)
-        }
+        //}
     }
     
     // MARK: -
