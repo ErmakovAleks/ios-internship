@@ -31,12 +31,10 @@ public class Controller {
         //self.washer = complex.washingBuilding.rooms[0].employees.extract() as? Washer
         
         self.accountants = complex.adminBuilding.rooms
-            .compactMap { $0.employees.extract() as? Accountant }
+            .compactMap { $0.employees.removeFirst() as? Accountant }
         self.washers = complex.washingBuilding.rooms
-            .compactMap { $0.employees.extract() as? Washer }
+            .compactMap { $0.employees.removeFirst() as? Washer }
         print(washers.count)
-//        self.cars = complex.washingBuilding.rooms
-//            .compactMap { $0.cars.extract() }
         
         director?.didFinishWork = { [weak self] worker in
             self?.report(object: worker)
@@ -55,7 +53,7 @@ public class Controller {
     // MARK: Public functions
     
     public func checkQueue() {
-        self.cars = complex.washingBuilding.rooms.compactMap { $0.cars.extract() }
+        self.cars = complex.washingBuilding.rooms.compactMap { $0.cars.removeFirst() }
         if var cars = cars {
             if !washers.isEmpty && !cars.isEmpty {
                 washer = washers.removeFirst()

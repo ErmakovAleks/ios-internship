@@ -7,13 +7,13 @@ let paul = Accountant(name: "Paul", gender: .male, salary: .coefficient(0.2))
 let ringo = Director(name: "Ringo", gender: .male)
 
 let washingPremises = Premises()
-washingPremises.employees.add(john)
-washingPremises.employees.add(george)
-washingPremises.employees.add(jack)
+washingPremises.employees.append(john)
+washingPremises.employees.append(george)
+washingPremises.employees.append(jack)
 let washingBuilding = WashingBuilding(rooms: [washingPremises])
 
 let adminCabinet = Cabinet(director: ringo)
-adminCabinet.employees.add(paul)
+adminCabinet.employees.append(paul)
 let adminBuilding = AdminBuilding(rooms: [adminCabinet])
 
 let complex = CarWashComplex(adminBuilding: adminBuilding, washingBuilding: washingBuilding)
@@ -21,11 +21,7 @@ let complex = CarWashComplex(adminBuilding: adminBuilding, washingBuilding: wash
 let view = View()
 let controller = Controller(view: view, complex: complex)
 
-print(washingPremises.employees.extract()?.name)
-print(washingPremises.employees.extract()?.name)
-print(washingPremises.employees.extract()?.name)
-
 while(true) {
-    washingPremises.cars.add(Car())
+    washingPremises.cars.append(Car())
     controller.checkQueue()
 }

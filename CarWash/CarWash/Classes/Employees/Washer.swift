@@ -48,7 +48,8 @@ public class Washer: Employee {
             isSuccess = false
             message = "I'm sorry, you don't have enough money, sir"
         }
-        print(self.message)
+        print(message)
+        print(client.money)
         self.didFinishWork?(self)
     }
     
