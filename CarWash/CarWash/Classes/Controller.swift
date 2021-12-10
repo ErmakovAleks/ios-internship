@@ -15,6 +15,7 @@ public class Controller {
     
     var accountants: [Accountant]
     var washers: [Washer]
+    var freeWashers: [Washer]
     var cars: [Car] = []
     let queue = DispatchQueue(label: "")
     
@@ -34,6 +35,8 @@ public class Controller {
         self.washers = complex.washingBuilding.rooms
             .flatMap { $0.employees.compactMap { $0 as? Washer } }
         
+        self.freeWashers = self.washers.filter { $0.isSuccess }
+        
         director?.didFinishWork = { [weak self] worker in
             self?.report(object: worker)
         }
@@ -49,7 +52,6 @@ public class Controller {
                 self?.report(object: worker)
             }
         }
-        
     }
     
     // MARK: -
@@ -57,49 +59,47 @@ public class Controller {
     
     public func checkQueue() {
         
-        var freeWashers = self.washers.filter { $0.isSuccess }
-        print(freeWashers.count)
         var cars = complex.washingBuilding.rooms.flatMap { $0.cars }
         
         complex.washingBuilding.rooms.forEach { room in
             room.cars.removeAll()
         }
-        print("carsCount = \(cars.count)")
         
-        let washer = freeWashers.removeFirst()
-        queue.asyncAfter(deadline: .now() + 1) {
-            self.washer?.action(car: cars.removeFirst())
-            if let washer = self.washer {
-                self.washers.append(washer)
+        self.queue.sync {
+            self.queue.asyncAfter(deadline: .now() + 3) {
+                self.freeWashers.forEach { washer in
+                    if !cars.isEmpty { washer.action(car: cars.removeFirst())
+                        self.freeWashers.append(self.freeWashers.removeFirst())
+                    }
+                }
             }
         }
     }
     
     public func report(object: MoneyContainable) {
         if object is Washer {
-            view.show(message: object.message)
+            self.view.show(message: object.message)
             if object.isSuccess {
-                if !accountants.isEmpty {
-                    accountant = accountants.removeFirst()
-                    queue.asyncAfter(deadline: .now() + 0.5) {
-                        self.accountant?.action(object: object)
-                        if let accountant = self.accountant {
-                            self.accountants.append(accountant)
-                        }
-                    }
+                self.queue.asyncAfter(deadline: .now() + 1) {
+                self.accountants.forEach { accountant in
+                    accountant.action(object: object)
+                    self.accountants.append(self.accountants.removeFirst())
                 }
-            } else {
-                object.isSuccess = true
-            }
+                }
+                } else {
+                    object.isSuccess = true
+                }
         } else if object is Accountant {
-            view.show(message: object.message)
-            queue.asyncAfter(deadline: .now() + 0.5) {
-                self.director?.action(object: object)
-            }
+            self.queue.asyncAfter(deadline: .now() + 0.5) {
+            self.view.show(message: object.message)
+            self.director?.action(object: object)
+        }
         } else if object is Director {
-            director.map {
-                view.show(message: $0.message)
+            self.queue.asyncAfter(deadline: .now() + 0.5) {
+            self.director.map {
+                self.view.show(message: $0.message)
             }
+        }
         }
     }
 }

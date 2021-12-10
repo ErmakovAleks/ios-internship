@@ -17,7 +17,7 @@ public class Director: Employee {
         salary: Salary = .none,
         bankAccount: Double = 0.0,
         money: Double = 0
-    ){
+    ) {
         super.init(
             name: name,
             gender: gender,

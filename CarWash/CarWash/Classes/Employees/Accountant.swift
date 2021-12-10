@@ -17,7 +17,7 @@ public class Accountant: Employee {
         salary: Salary = .coefficient(0.2),
         bankAccount: Double = 0.0,
         money: Double = 0
-    ){
+    ) {
         super.init(
             name: name,
             gender: gender,
@@ -32,12 +32,10 @@ public class Accountant: Employee {
     // MARK: Public functions
     
     public func action(object: MoneyContainable) {
-        //queue.asyncAfter(deadline: .now() + 1) {
-            self.distributeEarnings(object: object)
-            self.message = "My name is \(self.name), I am a \(self.position)," +
-            " I have \(self.bankAccount) on my bank account"
-            self.didFinishWork?(self)
-        //}
+        self.distributeEarnings(object: object)
+        self.message = "My name is \(self.name), I am a \(self.position)," +
+        " I have \(self.bankAccount) on my bank account"
+        self.didFinishWork?(self)
     }
     
     // MARK: -

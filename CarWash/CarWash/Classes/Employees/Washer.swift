@@ -18,7 +18,7 @@ public class Washer: Employee {
         salary: Salary = .coefficient(0.15),
         bankAccount: Double = 0.0,
         money: Double = 0
-    ){
+    ) {
         super.init(
             name: name,
             gender: gender,
@@ -33,7 +33,7 @@ public class Washer: Employee {
     // MARK: Public functions
     
     public func action(car: Car) {
-            self.washing(client: car)
+        self.washing(client: car)
     }
     
     public func washing(client: Car) {

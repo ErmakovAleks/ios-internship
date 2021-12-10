@@ -21,7 +21,9 @@ let complex = CarWashComplex(adminBuilding: adminBuilding, washingBuilding: wash
 let view = View()
 let controller = Controller(view: view, complex: complex)
 
+var i = 20
 while(true) {
     washingPremises.cars.append(Car())
     controller.checkQueue()
+    //i -= 1
 }
