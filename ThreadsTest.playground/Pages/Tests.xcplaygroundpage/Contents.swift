@@ -44,8 +44,8 @@ func task8() {
 
 var tasks: [() -> ()] = [task0, task1, task2, task3, task4, task5, task6, task7, task8]
 
-var i = 0
-while i < 100 {
+
+for i in 0..<100 {
     let f = tasks[i % 9]
     if i % 9 == 3 {
         serialQueue.async {
@@ -53,7 +53,6 @@ while i < 100 {
                 f()
             }
         }
-        i += 1
         continue
     } else if i % 9 == 6 {
         serialQueue.sync {
@@ -61,10 +60,8 @@ while i < 100 {
                 f()
             }
         }
-        i += 1
         continue
     }
     f()
-    i += 1
 }
 
