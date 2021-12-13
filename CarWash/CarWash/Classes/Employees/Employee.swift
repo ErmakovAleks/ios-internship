@@ -21,8 +21,9 @@ public class Employee: MoneyContainable {
     public var salary: Salary
     public var bankAccount: Double = 0
     public var position = String()
-    public var isSuccess = true
+    public var isBusy = true
     public var message = String()
+    public var serviceCost: Double
     
     // MARK: -
     // MARK: Initializations
@@ -39,6 +40,7 @@ public class Employee: MoneyContainable {
         self.salary = salary
         self.bankAccount = bankAccount
         self.money = money
+        self.serviceCost = 0
     }
     
     // MARK: -

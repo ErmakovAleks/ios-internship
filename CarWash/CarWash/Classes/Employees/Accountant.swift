@@ -6,7 +6,6 @@ public class Accountant: Employee {
     // MARK: Public variables
     
     public var didFinishWork: ((Accountant) -> ())?
-    private let queue = DispatchQueue(label: "", qos: .background)
     
     // MARK
     // MARK: Initializations
@@ -18,13 +17,7 @@ public class Accountant: Employee {
         bankAccount: Double = 0.0,
         money: Double = 0
     ) {
-        super.init(
-            name: name,
-            gender: gender,
-            salary: salary,
-            bankAccount: bankAccount,
-            money: money
-        )
+        super.init(name: name, gender: gender, salary: salary, bankAccount: bankAccount, money: money)
         position = "accountant"
     }
     
@@ -46,6 +39,6 @@ public class Accountant: Employee {
         self.bankAccount += object.money * self.salaryCoefficient()
         self.money = object.money - object.money *
         (self.salaryCoefficient() + object.salaryCoefficient())
-        object.money = 0
+        object.money -= object.serviceCost
     }
 }

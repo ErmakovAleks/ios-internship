@@ -6,7 +6,6 @@ public class Washer: Employee {
     // MARK: Public variables
     
     public var didFinishWork: ((Washer) -> ())?
-    public var serviceCost: Double = 20.0
     private let queue = DispatchQueue(label: "", qos: .background)
     
     // MARK: -
@@ -19,14 +18,9 @@ public class Washer: Employee {
         bankAccount: Double = 0.0,
         money: Double = 0
     ) {
-        super.init(
-            name: name,
-            gender: gender,
-            salary: salary,
-            bankAccount: bankAccount,
-            money: money
-        )
+        super.init(name: name, gender: gender, salary: salary, bankAccount: bankAccount, money: money)
         position = "washer"
+        serviceCost = 20.0
     }
     
     // MARK: -
@@ -43,7 +37,7 @@ public class Washer: Employee {
             "I have \(self.bankAccount) on my bank account"
             client.cleanness = true
         } else {
-            isSuccess = false
+            isBusy = false
             message = "I'm sorry, you don't have enough money, sir"
         }
         self.didFinishWork?(self)

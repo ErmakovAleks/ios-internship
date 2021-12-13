@@ -42,7 +42,7 @@ public class Controller {
         self.washers = complex.washingBuilding.rooms
             .flatMap { $0.employees.compactMap { $0 as? Washer } }
         
-        self.freeWashers = self.washers.filter { $0.isSuccess }
+        self.freeWashers = self.washers.filter { $0.isBusy }
         
         director?.didFinishWork = { [weak self] worker in
             self?.report(object: worker)
@@ -88,37 +88,32 @@ public class Controller {
                     self.view.show(message: object.message)
                     self.letShowWasherMessage = false
                 }
-                if object.isSuccess {
+                if object.isBusy {
                     self.queue.asyncAfter(deadline: self.time + 2) {
                         self.accountants.forEach { accountant in
                             accountant.action(object: object)
                             self.accountants.append(self.accountants.removeFirst())
+                        }
                     }
+                } else {
+                    self.letShowWasherMessage = true
+                    object.isBusy = true
                 }
-            } else {
-                self.letShowWasherMessage = true
-                object.isSuccess = true
             }
-        }
         } else if object is Accountant {
             self.queue.asyncAfter(deadline: self.time + 3) {
                 if self.letShowAccountantMessage || DispatchTime.now() > self.time + 5 {
                     self.view.show(message: object.message)
                     self.letShowAccountantMessage = false
                 }
-                self.queue.asyncAfter(deadline: self.time + 4) {
-                    self.director?.action(object: object)
-                }
+                self.director?.action(object: object)
             }
         } else if object is Director {
-            self.queue.asyncAfter(deadline: self.time + 5) {
-                self.director.map {
-                    self.view.show(message: $0.message)
-                }
-                self.letShowWasherMessage = true
-                self.letShowAccountantMessage = true
-                self.time = DispatchTime.now()
-            }
+            self.view.show(message: object.message)
+            self.letShowWasherMessage = true
+            self.letShowAccountantMessage = true
+            self.time = DispatchTime.now()
         }
     }
 }
+

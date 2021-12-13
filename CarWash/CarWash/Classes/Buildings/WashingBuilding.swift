@@ -10,7 +10,7 @@ public class WashingBuilding {
     // MARK: -
     // MARK: Initializations
     
-    init(rooms: [Premises]) {
-        self.rooms = rooms
+    init(rooms: Premises...) {
+        self.rooms = (rooms)
     }
 }

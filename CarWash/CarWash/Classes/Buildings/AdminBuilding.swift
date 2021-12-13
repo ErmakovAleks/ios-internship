@@ -6,15 +6,18 @@ public class AdminBuilding {
     // MARK: Public variables
     
     public var rooms: [Cabinet]
-    public var director: Director?
+    public var director: Director
     
     // MARK: -
     // MARK: Initializations
 
-    init(rooms: [Cabinet]) {
-        self.rooms = rooms
-        if !rooms.isEmpty {
-            self.director = rooms[0].director
-        }
+    init(director: Director, rooms: Cabinet...) {
+        self.director = director
+        self.rooms = (rooms)
+    }
+    
+    public init(directorName: String, directorGender: Gender, rooms: Cabinet...) {
+        self.director = Director.init(name: directorName, gender: directorGender)
+        self.rooms = (rooms)
     }
 }

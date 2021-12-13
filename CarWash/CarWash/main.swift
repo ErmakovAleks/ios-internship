@@ -10,20 +10,18 @@ let washingPremises = Premises()
 washingPremises.employees.append(john)
 washingPremises.employees.append(george)
 washingPremises.employees.append(jack)
-let washingBuilding = WashingBuilding(rooms: [washingPremises])
+let washingBuilding = WashingBuilding(rooms: washingPremises)
 
 let adminCabinet = Cabinet(director: ringo)
 adminCabinet.employees.append(paul)
-let adminBuilding = AdminBuilding(rooms: [adminCabinet])
+let adminBuilding = AdminBuilding(director: ringo, rooms: adminCabinet)
 
 let complex = CarWashComplex(adminBuilding: adminBuilding, washingBuilding: washingBuilding)
 
 let view = View()
 let controller = Controller(view: view, complex: complex)
 
-var i = 20
 while(true) {
     washingPremises.cars.append(Car())
     controller.checkQueue()
-    //i -= 1
 }
