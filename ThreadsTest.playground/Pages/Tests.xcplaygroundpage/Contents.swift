@@ -48,17 +48,15 @@ var tasks: [() -> ()] = [task0, task1, task2, task3, task4, task5, task6, task7,
 for i in 0..<100 {
     let f = tasks[i % 9]
     if i % 9 == 3 {
-        serialQueue.async {
-            serialQueue.asyncAfter(deadline: .now() + 0.01) {
-                f()
-            }
+        serialQueue.asyncAfter(deadline: .now() + 2) {
+            print(i)
+            f()
         }
         continue
     } else if i % 9 == 6 {
-        serialQueue.sync {
-            serialQueue.asyncAfter(deadline: .now() + 0.01) {
-                f()
-            }
+        serialQueue.asyncAfter(deadline: .now() + 1) {
+            print(i)
+            f()
         }
         continue
     }

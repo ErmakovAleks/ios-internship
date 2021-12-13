@@ -18,6 +18,10 @@ public class Controller {
     var freeWashers: [Washer]
     var cars: [Car] = []
     let queue = DispatchQueue(label: "")
+    var time: DispatchTime
+    
+    var letShowWasherMessage: Bool
+    var letShowAccountantMessage: Bool
     
     // MARK: -
     // MARK: Initializations
@@ -28,6 +32,9 @@ public class Controller {
         self.adminBuilding = complex.adminBuilding
         self.washingBuilding = complex.washingBuilding
         self.director = complex.adminBuilding.director
+        self.time = DispatchTime.now()
+        self.letShowWasherMessage = true
+        self.letShowAccountantMessage = true
         
         self.accountants = complex.adminBuilding.rooms
             .flatMap { $0.employees.compactMap { $0 as? Accountant } }
@@ -65,12 +72,10 @@ public class Controller {
             room.cars.removeAll()
         }
         
-        self.queue.sync {
-            self.queue.asyncAfter(deadline: .now() + 3) {
-                self.freeWashers.forEach { washer in
-                    if !cars.isEmpty { washer.action(car: cars.removeFirst())
-                        self.freeWashers.append(self.freeWashers.removeFirst())
-                    }
+        self.queue.asyncAfter(deadline: time) {
+            self.freeWashers.forEach { washer in
+                if !cars.isEmpty { washer.action(car: cars.removeFirst())
+                    self.freeWashers.append(self.freeWashers.removeFirst())
                 }
             }
         }
@@ -78,28 +83,42 @@ public class Controller {
     
     public func report(object: MoneyContainable) {
         if object is Washer {
-            self.view.show(message: object.message)
-            if object.isSuccess {
-                self.queue.asyncAfter(deadline: .now() + 1) {
-                self.accountants.forEach { accountant in
-                    accountant.action(object: object)
-                    self.accountants.append(self.accountants.removeFirst())
+            self.queue.asyncAfter(deadline: self.time + 1) {
+                if self.letShowWasherMessage {
+                    self.view.show(message: object.message)
+                    self.letShowWasherMessage = false
                 }
+                if object.isSuccess {
+                    self.queue.asyncAfter(deadline: self.time + 2) {
+                        self.accountants.forEach { accountant in
+                            accountant.action(object: object)
+                            self.accountants.append(self.accountants.removeFirst())
+                    }
                 }
-                } else {
-                    object.isSuccess = true
-                }
-        } else if object is Accountant {
-            self.queue.asyncAfter(deadline: .now() + 0.5) {
-            self.view.show(message: object.message)
-            self.director?.action(object: object)
-        }
-        } else if object is Director {
-            self.queue.asyncAfter(deadline: .now() + 0.5) {
-            self.director.map {
-                self.view.show(message: $0.message)
+            } else {
+                self.letShowWasherMessage = true
+                object.isSuccess = true
             }
         }
+        } else if object is Accountant {
+            self.queue.asyncAfter(deadline: self.time + 3) {
+                if self.letShowAccountantMessage || DispatchTime.now() > self.time + 5 {
+                    self.view.show(message: object.message)
+                    self.letShowAccountantMessage = false
+                }
+                self.queue.asyncAfter(deadline: self.time + 4) {
+                    self.director?.action(object: object)
+                }
+            }
+        } else if object is Director {
+            self.queue.asyncAfter(deadline: self.time + 5) {
+                self.director.map {
+                    self.view.show(message: $0.message)
+                }
+                self.letShowWasherMessage = true
+                self.letShowAccountantMessage = true
+                self.time = DispatchTime.now()
+            }
         }
     }
 }
