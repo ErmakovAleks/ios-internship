@@ -28,6 +28,8 @@ public class Accountant: Employee {
         self.distributeEarnings(object: object)
         self.message = "My name is \(self.name), I am a \(self.position)," +
         " I have \(self.bankAccount) on my bank account"
+        let randomTime = UInt32(Int.random(in: 0...3))
+        sleep(randomTime)
         self.didFinishWork?(self)
     }
     

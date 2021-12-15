@@ -36,6 +36,8 @@ public class Director: Employee {
             self.takeProfit(object: object)
             self.message = "My name is \(self.name), I am a \(self.position), " +
             "I have \(self.bankAccount) on my bank account"
+            let randomTime = UInt32(Int.random(in: 0...2))
+            sleep(randomTime)
             self.didFinishWork!(self)
         }
     }

@@ -21,7 +21,7 @@ public class Employee: MoneyContainable {
     public var salary: Salary
     public var bankAccount: Double = 0
     public var position = String()
-    public var isBusy = true
+    public var isBusy = false
     public var message = String()
     public var serviceCost: Double
     

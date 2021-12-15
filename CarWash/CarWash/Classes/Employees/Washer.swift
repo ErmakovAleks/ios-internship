@@ -40,6 +40,8 @@ public class Washer: Employee {
             isBusy = false
             message = "I'm sorry, you don't have enough money, sir"
         }
+        let randomTime = UInt32(Int.random(in: 0...5))
+        sleep(randomTime)
         self.didFinishWork?(self)
     }
     
