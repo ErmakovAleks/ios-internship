@@ -29,13 +29,13 @@ public class Controller {
         self.washingBuilding = complex.washingBuilding
         self.director = complex.adminBuilding.director
         
-        /// ЗАМЕНИТЬ ВЛОЖЕННЫЕ CompactMap ///
-        
         self.accountants = complex.adminBuilding.rooms
-            .flatMap { $0.employees.compactMap { $0 as? Accountant } }
+            .flatMap { $0.employees }
+            .compactMap { $0 as? Accountant }
         
         self.washers = complex.washingBuilding.rooms
-            .flatMap { $0.employees.compactMap { $0 as? Washer } }
+            .flatMap { $0.employees }
+            .compactMap { $0 as? Washer }
         
         self.freeWashers = self.washers.filter { !($0.isBusy) }
         

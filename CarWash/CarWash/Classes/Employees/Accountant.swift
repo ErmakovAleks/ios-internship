@@ -37,10 +37,17 @@ public class Accountant: Employee {
     // MARK: Private functions
     
     private func distributeEarnings(object: MoneyContainable) {
-        object.bankAccount += object.money * object.salaryCoefficient()
-        self.bankAccount += object.money * self.salaryCoefficient()
-        self.money = object.money - object.money *
-        (self.salaryCoefficient() + object.salaryCoefficient())
-        object.money -= object.serviceCost
+        if object.isEarned {
+            object.bankAccount += object.serviceCost * object.salaryCoefficient()
+            self.bankAccount += object.serviceCost * self.salaryCoefficient()
+            self.money = object.serviceCost - object.serviceCost *
+            (self.salaryCoefficient() + object.salaryCoefficient())
+            object.money -= object.serviceCost
+            object.isBusy = false
+            object.isEarned = false
+            self.isEarned = true
+        } else {
+            self.isEarned = false
+        }
     }
 }

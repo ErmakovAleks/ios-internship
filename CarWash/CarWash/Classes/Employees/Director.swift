@@ -43,7 +43,9 @@ public class Director: Employee {
     }
     
     public func takeProfit(object: MoneyContainable) {
-        self.bankAccount += Double(object.money)
-        object.money = 0
+        if object.isEarned {
+            self.bankAccount += object.serviceCost
+            object.money -= object.serviceCost
+        }
     }
 }

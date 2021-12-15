@@ -11,6 +11,7 @@ public protocol MoneyContainable: AnyObject {
     var isBusy: Bool { get set }
     var message: String { get }
     var serviceCost: Double { get }
+    var isEarned: Bool{ get set }
     
     // MARK: -
     // MARK: Public functions
