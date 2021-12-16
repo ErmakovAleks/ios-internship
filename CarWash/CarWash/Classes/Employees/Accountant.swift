@@ -28,8 +28,7 @@ public class Accountant: Employee {
         self.distributeEarnings(object: object)
         self.message = "My name is \(self.name), I am a \(self.position)," +
         " I have \(self.bankAccount) on my bank account"
-        let randomTime = UInt32(Int.random(in: 0...3))
-        sleep(randomTime)
+        sleep(UInt32(Int.random(in: 0...3)))
         self.didFinishWork?(self)
     }
     
@@ -37,17 +36,13 @@ public class Accountant: Employee {
     // MARK: Private functions
     
     private func distributeEarnings(object: MoneyContainable) {
-        if object.isEarned {
-            object.bankAccount += object.serviceCost * object.salaryCoefficient()
-            self.bankAccount += object.serviceCost * self.salaryCoefficient()
-            self.money = object.serviceCost - object.serviceCost *
-            (self.salaryCoefficient() + object.salaryCoefficient())
-            object.money -= object.serviceCost
-            object.isBusy = false
-            object.isEarned = false
-            self.isEarned = true
-        } else {
-            self.isEarned = false
-        }
+        object.bankAccount += object.serviceCost * object.salaryCoefficient()
+        self.bankAccount += object.serviceCost * self.salaryCoefficient()
+        self.earnings = object.serviceCost - object.serviceCost *
+        (self.salaryCoefficient() + object.salaryCoefficient())
+        self.serviceCost = object.serviceCost
+        object.earnings -= object.serviceCost
+        object.isEarned = false
+        self.isEarned = true
     }
 }

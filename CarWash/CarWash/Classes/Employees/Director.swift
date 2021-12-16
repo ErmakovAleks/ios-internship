@@ -36,16 +36,15 @@ public class Director: Employee {
             self.takeProfit(object: object)
             self.message = "My name is \(self.name), I am a \(self.position), " +
             "I have \(self.bankAccount) on my bank account"
-            let randomTime = UInt32(Int.random(in: 0...2))
-            sleep(randomTime)
+            sleep(UInt32(Int.random(in: 0...2)))
             self.didFinishWork!(self)
         }
     }
     
     public func takeProfit(object: MoneyContainable) {
         if object.isEarned {
-            self.bankAccount += object.serviceCost
-            object.money -= object.serviceCost
+            self.bankAccount += object.earnings
+            object.earnings -= object.earnings
         }
     }
 }

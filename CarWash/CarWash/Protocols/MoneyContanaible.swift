@@ -5,7 +5,7 @@ public protocol MoneyContainable: AnyObject {
     // MARK: -
     // MARK: Public variables
     
-    var money: Double { get set }
+    var earnings: Double { get set }
     var bankAccount: Double { get set }
     var position: String { get }
     var isBusy: Bool { get set }

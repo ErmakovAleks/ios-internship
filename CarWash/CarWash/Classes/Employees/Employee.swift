@@ -15,7 +15,7 @@ public class Employee: MoneyContainable {
     // MARK: -
     // MARK: Public variables
     
-    public var money: Double = 0
+    public var earnings: Double = 0
     public var name: String
     public var gender: Gender
     public var salary: Salary
@@ -40,7 +40,7 @@ public class Employee: MoneyContainable {
         self.gender = gender
         self.salary = salary
         self.bankAccount = bankAccount
-        self.money = money
+        self.earnings = money
         self.serviceCost = 0
     }
     

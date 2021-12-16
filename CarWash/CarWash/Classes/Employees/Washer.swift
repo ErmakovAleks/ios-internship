@@ -36,15 +36,12 @@ public class Washer: Employee {
             message = "My name is \(self.name), I am a \(self.position), " +
             "I have \(self.bankAccount) on my bank account"
             client.cleanness = true
-            isBusy = true
             isEarned = true
         } else {
-            isBusy = false
             isEarned = false
             message = "I'm sorry, you don't have enough money, sir"
         }
-        let randomTime = UInt32(Int.random(in: 0...5))
-        sleep(randomTime)
+        sleep(UInt32(Int.random(in: 0...5)))
         self.didFinishWork?(self)
     }
     
@@ -56,6 +53,6 @@ public class Washer: Employee {
     }
     
     private func moneyFromClient(client: Car) {
-        self.money += client.pay(payment: serviceCost)
+        self.earnings += client.pay(payment: serviceCost)
     }
 }

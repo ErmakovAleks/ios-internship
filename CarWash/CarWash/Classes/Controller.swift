@@ -14,6 +14,7 @@ public class Controller {
     var washer: Washer?
     
     var accountants: [Accountant]
+    var freeAccountants: [Accountant] = []
     var washers: [Washer]
     var freeWashers: [Washer] = []
     var cars: [Car] = []
@@ -37,7 +38,11 @@ public class Controller {
             .flatMap { $0.employees }
             .compactMap { $0 as? Washer }
         
-        self.freeWashers = self.washers.filter { !($0.isBusy) }
+        self.cars = complex.washingBuilding.rooms.flatMap { $0.cars }
+        
+        complex.washingBuilding.rooms.forEach { room in
+            room.cars.removeAll()
+        }
         
         director?.didFinishWork = { [weak self] worker in
             self?.report(object: worker)
@@ -61,33 +66,40 @@ public class Controller {
     
     public func checkQueue() {
         
-        var cars = complex.washingBuilding.rooms.flatMap { $0.cars }
+        self.cars += complex.washingBuilding.rooms.flatMap { $0.cars }
         
         complex.washingBuilding.rooms.forEach { room in
             room.cars.removeAll()
         }
         
+        self.freeAccountants = self.accountants.filter { !($0.isBusy) }
+        
+        self.freeWashers = self.washers.filter { !($0.isBusy) }
+        
         self.freeWashers.forEach { washer in
-            if !cars.isEmpty { washer.action(car: cars.removeFirst())
-                self.freeWashers.append(self.freeWashers.removeFirst())
+            if !cars.isEmpty {
+                washer.isBusy = true
+                washer.action(car: cars.removeFirst())
             }
+            print(washers[0].isBusy, washers[1].isBusy, washers[2].isBusy)
         }
     }
     
     public func report(object: MoneyContainable) {
         if object is Washer {
             self.view.show(message: object.message)
-            if !object.isBusy {
-                self.accountants.forEach { accountant in
-                    accountant.action(object: object)
-                    self.accountants.append(self.accountants.removeFirst())
-                }
-            } else {
-                object.isBusy = true
+            if object.isEarned && !accountants.isEmpty {
+                self.accountant = self.freeAccountants.removeFirst()
+                self.accountant?.isBusy = true
+                self.accountant?.action(object: object)
             }
+            object.isBusy = false
         } else if object is Accountant {
             self.view.show(message: object.message)
-            self.director?.action(object: object)
+            if object.isEarned {
+                self.director?.action(object: object)
+            }
+            object.isBusy = false
         } else if object is Director {
             self.view.show(message: object.message)
         }
