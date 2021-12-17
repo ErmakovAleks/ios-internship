@@ -32,13 +32,11 @@ public class Director: Employee {
     // MARK: Public functions
     
     public func action(object: MoneyContainable) {
-        queue.asyncAfter(deadline: .now() + 1) {
-            self.takeProfit(object: object)
-            self.message = "My name is \(self.name), I am a \(self.position), " +
-            "I have \(self.bankAccount) on my bank account"
-            sleep(UInt32(Int.random(in: 0...2)))
-            self.didFinishWork!(self)
-        }
+        self.takeProfit(object: object)
+        self.message = "My name is \(self.name), I am a \(self.position), " +
+        "I have \(self.bankAccount) on my bank account"
+        sleep(UInt32(Int.random(in: 0...2)))
+        self.didFinishWork!(self)
     }
     
     public func takeProfit(object: MoneyContainable) {
