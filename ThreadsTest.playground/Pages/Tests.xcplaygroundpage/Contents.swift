@@ -87,33 +87,127 @@ var tasks: [() -> ()] = [task0, task1, task2, task3, task4, task5, task6, task7,
 
 //-------------------------------------------------------------
 
-public class ThreadSafeString {
-    private var internalString = ""
-    let isolationQueue = DispatchQueue(label:"com.bestkora.isolation",
-                                       attributes: .concurrent)
+//public class ThreadSafeString {
+//    private var internalString = ""
+//    let isolationQueue = DispatchQueue(label:"com.bestkora.isolation",
+//                                       attributes: .concurrent)
+//
+//    public func addString(string: String) {
+//        isolationQueue.async(flags: .barrier) {
+//            self.internalString = self.internalString + string
+//        }
+//    }
+//    public func setString(string: String) {
+//        isolationQueue.async(flags: .barrier) {
+//            self.internalString = string
+//        }
+//    }
+//
+//    public init (_ string: String){
+//        isolationQueue.async(flags: .barrier) {
+//            self.internalString = string
+//        }
+//    }
+//
+//    public var text: String {
+//        var result = ""
+//        isolationQueue.sync {
+//            result = self.internalString
+//        }
+//        return result
+//    }
+//}
+
+//----------------------------------------------------------------
+
+//class AsyncVsSyncTest {
+//    private let serQueue = DispatchQueue(label: "ser")
+//
+//    func testConcurrent() {
+//        serQueue.async {
+//            print("test1")
+//        }
+//
+//        serQueue.async {
+//            sleep(1)
+//            print("test2")
+//        }
+//
+//        serQueue.async {
+//            sleep(1)
+//            print("test3")
+//        }
+//
+//        serQueue.sync {
+//            print("test4")
+//        }
+//    }
+//}
+//
+//let test = AsyncVsSyncTest()
+//
+//test.testConcurrent()
+
+//--------------------------------------------------------------------
+
+//let sQueue = DispatchQueue(label: "sQueue")
+//let item = DispatchWorkItem {
+//     print("test")
+//}
+//item.notify(queue: sQueue) {
+//     print("finish")
+//}
+//sQueue.async {
+//     sleep(1)
+//}
+//sQueue.async(execute: item)
+//item.cancel()
+
+//---------------------------------------------------------------------
+
+//class SemaphoreTest {
+//
+//    private let semaphore = DispatchSemaphore(value: 0)
+//
+//    func test() {
+//
+//        DispatchQueue.global().async {
+//            sleep(3)
+//            print("1")
+//            self.semaphore.signal()
+//        }
+//        semaphore.wait()
+//        print("2")
+//    }
+//}
+//
+//let semaphoreTest = SemaphoreTest()
+//semaphoreTest.test()
+
+//---------------------------------------------------------------------
+
+class DispatchGroupTest {
+    private let group = DispatchGroup()
+    private let queue = DispatchQueue(label: "DispatchGroupTest")
     
-    public func addString(string: String) {
-        isolationQueue.async(flags: .barrier) {
-            self.internalString = self.internalString + string
+    func testWait() {
+        group.enter()
+        queue.async {
+            sleep(5)
+            print("1")
+            self.group.leave()
         }
-    }
-    public func setString(string: String) {
-        isolationQueue.async(flags: .barrier) {
-            self.internalString = string
+        group.enter()
+        queue.async {
+            sleep(5)
+            print("2")
+            self.group.leave()
         }
-    }
-    
-    public init (_ string: String){
-        isolationQueue.async(flags: .barrier) {
-            self.internalString = string
-        }
-    }
-    
-    public var text: String {
-        var result = ""
-        isolationQueue.sync {
-            result = self.internalString
-        }
-        return result
+        group.wait()
+        print("finish all")
     }
 }
+
+let dgTest = DispatchGroupTest()
+
+dgTest.testWait()
