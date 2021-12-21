@@ -6,13 +6,13 @@ public class Premises: Room {
     // MARK: Public variables
     
     public var employees: [Employee]
-    public var cars: [Car]
+    public var cars: Queue<Car>
     
     // MARK: -
     // MARK: Initializations
     
     public init() {
         self.employees = []
-        self.cars = []
+        self.cars = Queue()
     }
 }

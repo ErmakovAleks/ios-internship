@@ -44,3 +44,23 @@ queue.asyncAfter(deadline: .now() + 1) {
     finish()
 }
 
+class DispatchBarrierTest {
+    
+    private let dbqueue = DispatchQueue(label: "DispatchBarrierTest", attributes: .concurrent)
+    private var internalTest: Int = 0
+    
+    func setTest( _ test: Int) {
+        dbqueue.async(flags: .barrier) {
+            self.internalTest = test
+        }
+    }
+    
+    func test() -> Int {
+        var tmp: Int = 0
+        dbqueue.sync {
+            tmp = self.internalTest
+        }
+        return tmp
+    }
+}
+

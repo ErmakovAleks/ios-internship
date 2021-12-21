@@ -186,28 +186,41 @@ var tasks: [() -> ()] = [task0, task1, task2, task3, task4, task5, task6, task7,
 
 //---------------------------------------------------------------------
 
-class DispatchGroupTest {
-    private let group = DispatchGroup()
-    private let queue = DispatchQueue(label: "DispatchGroupTest")
-    
-    func testWait() {
-        group.enter()
-        queue.async {
-            sleep(5)
-            print("1")
-            self.group.leave()
-        }
-        group.enter()
-        queue.async {
-            sleep(5)
-            print("2")
-            self.group.leave()
-        }
-        group.wait()
-        print("finish all")
-    }
+//class DispatchGroupTest {
+//    private let group = DispatchGroup()
+//    private let queue = DispatchQueue(label: "DispatchGroupTest")
+//
+//    func testWait() {
+//        group.enter()
+//        queue.async {
+//            sleep(5)
+//            print("1")
+//            self.group.leave()
+//        }
+//        group.enter()
+//        queue.async {
+//            sleep(5)
+//            print("2")
+//            self.group.leave()
+//        }
+//        group.wait()
+//        print("finish all")
+//    }
+//}
+//
+//let dgTest = DispatchGroupTest()
+//
+//dgTest.testWait()
+
+
+var array = Array(1...10)
+
+print(array.removeFirst())
+
+array.forEach { _ in
+    print(array.removeFirst())
 }
 
-let dgTest = DispatchGroupTest()
+array.removeFirst()
 
-dgTest.testWait()
+

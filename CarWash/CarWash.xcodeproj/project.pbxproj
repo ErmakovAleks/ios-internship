@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		812B47D62772190100FC5415 /* ThreadSafeArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812B47D52772190100FC5415 /* ThreadSafeArray.swift */; };
 		81917E9427576B1A0084C5C5 /* AdminBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81917E9327576B1A0084C5C5 /* AdminBuilding.swift */; };
 		81917E96275772B50084C5C5 /* WashingBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81917E95275772B50084C5C5 /* WashingBuilding.swift */; };
 		81917E98275773240084C5C5 /* CarWashComplex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81917E97275773240084C5C5 /* CarWashComplex.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		812B47D52772190100FC5415 /* ThreadSafeArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadSafeArray.swift; sourceTree = "<group>"; };
 		81917E9327576B1A0084C5C5 /* AdminBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminBuilding.swift; sourceTree = "<group>"; };
 		81917E95275772B50084C5C5 /* WashingBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WashingBuilding.swift; sourceTree = "<group>"; };
 		81917E97275773240084C5C5 /* CarWashComplex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarWashComplex.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				81EDEAEA274E2BEC00977000 /* Queue.swift */,
+				812B47D52772190100FC5415 /* ThreadSafeArray.swift */,
 			);
 			path = Structures;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				8458272A274C1DE300AB23EF /* Car.swift in Sources */,
 				8458273F274C22F400AB23EF /* MoneyContanaible.swift in Sources */,
 				849A0447275086A7004B4A7A /* FeedbackView.swift in Sources */,
+				812B47D62772190100FC5415 /* ThreadSafeArray.swift in Sources */,
 				84582733274C217900AB23EF /* Premises.swift in Sources */,
 				84582724274C1C4B00AB23EF /* Accountant.swift in Sources */,
 				849A04442750854D004B4A7A /* Controller.swift in Sources */,

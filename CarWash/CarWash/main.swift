@@ -22,6 +22,6 @@ let view = View()
 let controller = Controller(view: view, complex: complex)
 
 while(true) {
-    washingPremises.cars.append(Car())
+    washingPremises.cars.add(Car())
     controller.checkQueue()
 }

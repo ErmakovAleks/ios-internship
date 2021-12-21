@@ -1,5 +1,14 @@
 import Foundation
 
+extension NSLocking {
+    func `do`( _ action: () -> ()) {
+        self.lock()
+        defer { self.unlock() }
+        
+        action()
+    }
+}
+
 public class Controller {
     
     // MARK: -
@@ -15,7 +24,7 @@ public class Controller {
     
     var accountants: [Accountant]
     var washers: [Washer]
-    var cars: [Car] = []
+    var cars: ThreadSafeArray<Car>
     let queue = DispatchQueue(label: "com.controllerQueue", attributes: .concurrent)
     let lock = NSLock()
     
@@ -37,11 +46,19 @@ public class Controller {
             .flatMap { $0.employees }
             .compactMap { $0 as? Washer }
         
-        self.cars = complex.washingBuilding.rooms.flatMap { $0.cars }
-        
         complex.washingBuilding.rooms.forEach { room in
-            room.cars.removeAll()
+            while !room.cars.isEmpty {
+                if let car = room.cars.extract() {
+                    self.cars.append(car)
+                }
+            }
         }
+        
+//        self.cars = complex.washingBuilding.rooms.flatMap { $0.cars }
+//
+//        complex.washingBuilding.rooms.forEach { room in
+//            room.cars.removeAll()
+//        }
         
         director?.didFinishWork = { [weak self] worker in
             self?.report(object: worker)
@@ -65,12 +82,10 @@ public class Controller {
     
     public func checkQueue() {
         
-        safetyActions {
-            queue.async {
-                self.cars += self.complex.washingBuilding.rooms.flatMap { $0.cars }
-                
-                self.complex.washingBuilding.rooms.forEach { room in
-                    room.cars.removeAll()
+        self.complex.washingBuilding.rooms.forEach { room in
+            while !room.cars.isEmpty {
+                if let car = room.cars.extract() {
+                    self.cars.append(car)
                 }
             }
         }
