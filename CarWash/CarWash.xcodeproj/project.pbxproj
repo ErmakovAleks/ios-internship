@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		812B47D62772190100FC5415 /* ThreadSafeArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812B47D52772190100FC5415 /* ThreadSafeArray.swift */; };
+		815DDBB3277378B90091ABAC /* NSLockingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815DDBB2277378B90091ABAC /* NSLockingExtension.swift */; };
 		81917E9427576B1A0084C5C5 /* AdminBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81917E9327576B1A0084C5C5 /* AdminBuilding.swift */; };
 		81917E96275772B50084C5C5 /* WashingBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81917E95275772B50084C5C5 /* WashingBuilding.swift */; };
 		81917E98275773240084C5C5 /* CarWashComplex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81917E97275773240084C5C5 /* CarWashComplex.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		812B47D52772190100FC5415 /* ThreadSafeArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadSafeArray.swift; sourceTree = "<group>"; };
+		815DDBB2277378B90091ABAC /* NSLockingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLockingExtension.swift; sourceTree = "<group>"; };
 		81917E9327576B1A0084C5C5 /* AdminBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminBuilding.swift; sourceTree = "<group>"; };
 		81917E95275772B50084C5C5 /* WashingBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WashingBuilding.swift; sourceTree = "<group>"; };
 		81917E97275773240084C5C5 /* CarWashComplex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarWashComplex.swift; sourceTree = "<group>"; };
@@ -74,6 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		815DDBB1277378680091ABAC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				815DDBB2277378B90091ABAC /* NSLockingExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		81EDEAEC274E696200977000 /* Employees */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +158,7 @@
 		8458271A274C1A2800AB23EF /* CarWash */ = {
 			isa = PBXGroup;
 			children = (
+				815DDBB1277378680091ABAC /* Extensions */,
 				81EDEAF0274E6AE800977000 /* Structures */,
 				81EDEAEF274E6AC000977000 /* Classes */,
 				81EDEAED274E69F100977000 /* Protocols */,
@@ -221,6 +232,7 @@
 				8458273C274C229D00AB23EF /* Washer.swift in Sources */,
 				84582736274C21C300AB23EF /* Room.swift in Sources */,
 				8400A63427572ADF000E35A1 /* Cabinet.swift in Sources */,
+				815DDBB3277378B90091ABAC /* NSLockingExtension.swift in Sources */,
 				8458272D274C1E2700AB23EF /* Director.swift in Sources */,
 				81917E9427576B1A0084C5C5 /* AdminBuilding.swift in Sources */,
 				8458272A274C1DE300AB23EF /* Car.swift in Sources */,

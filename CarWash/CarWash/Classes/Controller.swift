@@ -1,14 +1,5 @@
 import Foundation
 
-extension NSLocking {
-    func `do`( _ action: () -> ()) {
-        self.lock()
-        defer { self.unlock() }
-        
-        action()
-    }
-}
-
 public class Controller {
     
     // MARK: -
@@ -25,7 +16,7 @@ public class Controller {
     var accountants: [Accountant]
     var washers: [Washer]
     var cars: ThreadSafeArray<Car> = ThreadSafeArray()
-    let queue = DispatchQueue(label: "com.controllerQueue", attributes: .concurrent)
+    let queue = DispatchQueue(label: "com.car-wash.controller-queue", attributes: .concurrent)
     let lock = NSRecursiveLock()
     
     // MARK: -

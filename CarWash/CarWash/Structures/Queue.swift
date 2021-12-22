@@ -2,9 +2,24 @@ import Foundation
 
 public struct Queue<T> {
     
+    // MARK: -
+    // MARK: Public variables
+    
+    public var isEmpty: Bool {
+        return self.lock.do {
+            return array.isEmpty
+        }
+    }
+    
+    // MARK: -
+    // MARK: Private variablers
+    
     private var array: [T] = []
+    
     private let lock = NSRecursiveLock()
-    private let concurrentQueue = DispatchQueue(label: "com.concurrentQueue", attributes: .concurrent)
+    
+    // MARK: -
+    // MARK: Public functions
     
     public mutating func add(_ item: T) {
         self.lock.do {
@@ -13,20 +28,16 @@ public struct Queue<T> {
     }
     
     public mutating func extract() -> T? {
-        var temp: T?
-        self.lock.do {
-            if !array.isEmpty {
-                temp = array.removeFirst()
-            } else {
-                temp = nil
-            }
+        return self.lock.do {
+            return !self.array.isEmpty
+            ? self.array.removeFirst()
+            : nil
         }
-        return temp
     }
     
     public mutating func clear() {
-        array.removeAll()
+        self.lock.do{
+            array.removeAll()
+        }
     }
-    
-    public var isEmpty: Bool { return array.isEmpty }
 }

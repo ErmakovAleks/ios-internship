@@ -1,36 +1,44 @@
 import Foundation
 
 public class ThreadSafeArray<T> {
+    
+    // MARK: -
+    // MARK: Public variables
+    
+    public var isEmpty: Bool {
+        return self.queue.sync {
+            self.array.isEmpty
+        }
+    }
+    
+    // MARK: -
+    // MARK: Private variables
+    
     private var array: [T] = []
-    private let queue = DispatchQueue(label: "com.ThreadSafeArrayQueue", attributes: .concurrent)
+    private let queue = DispatchQueue(label: "com.car-wash.thread-safe-array", attributes: .concurrent)
+    
+    // MARK: -
+    // MARK: Public functions
     
     public func append( _ newItem: T) {
-        self.queue.async(flags: .barrier) {
+        self.queue.sync(flags: .barrier) {
             self.array.append(newItem)
         }
     }
     
     public func removeFirst() -> T? {
-        var temp: T?
-        self.queue.async {
-            temp = self.array.removeFirst()
+        return self.queue.sync(flags: .barrier) {
+            self.array.removeFirst()
         }
-        return temp
     }
     
     public func getItem( _ index: Int) -> T? {
-        var temp: T?
         self.queue.sync {
-            temp = self.array[index]
+            if !array.isEmpty {
+                return self.array[index]
+            } else {
+                return nil
+            }
         }
-        return temp
-    }
-    
-    public var isEmpty: Bool {
-        var temp: Bool = true
-        self.queue.sync {
-            temp = self.array.isEmpty
-        }
-        return temp
     }
 }

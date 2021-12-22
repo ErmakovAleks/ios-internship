@@ -3,5 +3,7 @@
     <pages>
         <page name='Tests'/>
         <page name='Untitled Page'/>
+        <page name='Untitled Page 2'/>
+        <page name='Atomic'/>
     </pages>
 </playground>
