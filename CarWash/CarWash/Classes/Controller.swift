@@ -26,7 +26,7 @@ public class Controller {
     var washers: [Washer]
     var cars: ThreadSafeArray<Car> = ThreadSafeArray()
     let queue = DispatchQueue(label: "com.controllerQueue", attributes: .concurrent)
-    let lock = NSLock()
+    let lock = NSRecursiveLock()
     
     // MARK: -
     // MARK: Initializations
@@ -85,14 +85,20 @@ public class Controller {
         }
         
         queue.async {
-            let freeWashers = self.washers.filter { !($0.isBusy) }
-            freeWashers.forEach { washer in
-                if !self.cars.isEmpty {
-                    washer.isBusy = true
-                    if let car = self.cars.removeFirst() {
-                        washer.action(car: car)
+            self.lock.do{
+                print("aaa")
+                let freeWashers = self.washers.filter { !($0.isBusy) }
+                print("ccc")
+                freeWashers.forEach { washer in
+                    if !self.cars.isEmpty {
+                        washer.isBusy = true
+                        if let car = self.cars.removeFirst() {
+                            washer.action(car: car)
+                        }
                     }
+                    print("ddd")
                 }
+                print("bbb")
             }
         }
     }

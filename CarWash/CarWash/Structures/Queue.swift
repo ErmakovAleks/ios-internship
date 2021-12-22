@@ -3,7 +3,7 @@ import Foundation
 public struct Queue<T> {
     
     private var array: [T] = []
-    private let lock = NSLock()
+    private let lock = NSRecursiveLock()
     private let concurrentQueue = DispatchQueue(label: "com.concurrentQueue", attributes: .concurrent)
     
     public mutating func add(_ item: T) {
