@@ -20,8 +20,16 @@ public class ThreadSafeArray<T> {
     
     public func getItem( _ index: Int) -> T? {
         var temp: T?
-        queue.sync {
+        self.queue.sync {
             temp = self.array[index]
+        }
+        return temp
+    }
+    
+    public var isEmpty: Bool {
+        var temp: Bool = true
+        self.queue.sync {
+            temp = self.array.isEmpty
         }
         return temp
     }

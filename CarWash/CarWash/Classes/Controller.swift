@@ -24,7 +24,7 @@ public class Controller {
     
     var accountants: [Accountant]
     var washers: [Washer]
-    var cars: ThreadSafeArray<Car>
+    var cars: ThreadSafeArray<Car> = ThreadSafeArray()
     let queue = DispatchQueue(label: "com.controllerQueue", attributes: .concurrent)
     let lock = NSLock()
     
@@ -53,12 +53,6 @@ public class Controller {
                 }
             }
         }
-        
-//        self.cars = complex.washingBuilding.rooms.flatMap { $0.cars }
-//
-//        complex.washingBuilding.rooms.forEach { room in
-//            room.cars.removeAll()
-//        }
         
         director?.didFinishWork = { [weak self] worker in
             self?.report(object: worker)
@@ -90,13 +84,13 @@ public class Controller {
             }
         }
         
-        safetyActions {
-            queue.async {
-                let freeWashers = self.washers.filter { !($0.isBusy) }
-                freeWashers.forEach { washer in
-                    if !self.cars.isEmpty {
-                        washer.isBusy = true
-                        washer.action(car: self.cars.removeFirst())
+        queue.async {
+            let freeWashers = self.washers.filter { !($0.isBusy) }
+            freeWashers.forEach { washer in
+                if !self.cars.isEmpty {
+                    washer.isBusy = true
+                    if let car = self.cars.removeFirst() {
+                        washer.action(car: car)
                     }
                 }
             }
@@ -104,34 +98,26 @@ public class Controller {
     }
     
     public func report(object: MoneyContainable) {
-        safetyActions {
-            queue.async {
-                if object is Washer {
-                    self.view.show(message: object.message)
-                    if object.isEarned && !self.accountants.isEmpty {
-                        var freeAccountants = self.accountants.filter { !($0.isBusy) }
-                        self.accountant = freeAccountants.removeFirst()
-                        self.accountant?.isBusy = true
-                        self.accountant?.action(object: object)
-                    }
-                    object.isBusy = false
-                } else if object is Accountant {
-                    self.view.show(message: object.message)
-                    if object.isEarned {
-                        self.director?.action(object: object)
-                    }
-                    object.isBusy = false
-                } else if object is Director {
-                    self.view.show(message: object.message)
+        queue.async {
+            if object is Washer {
+                self.view.show(message: object.message)
+                if object.isEarned && !self.accountants.isEmpty {
+                    var freeAccountants = self.accountants.filter { !($0.isBusy) }
+                    self.accountant = freeAccountants.removeFirst()
+                    self.accountant?.isBusy = true
+                    self.accountant?.action(object: object)
                 }
+                object.isBusy = false
+            } else if object is Accountant {
+                self.view.show(message: object.message)
+                if object.isEarned {
+                    self.director?.action(object: object)
+                }
+                object.isBusy = false
+            } else if object is Director {
+                self.view.show(message: object.message)
             }
         }
-    }
-    
-    private func safetyActions(closure: () -> ()) {
-        lock.lock()
-        closure()
-        lock.unlock()
     }
 }
 
