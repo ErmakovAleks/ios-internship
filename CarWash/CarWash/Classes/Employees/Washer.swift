@@ -6,7 +6,6 @@ public class Washer: Employee {
     // MARK: Public variables
     
     public var didFinishWork: ((Washer) -> ())?
-    private let queue = DispatchQueue(label: "", qos: .background)
     
     // MARK: -
     // MARK: Initializations
@@ -19,7 +18,6 @@ public class Washer: Employee {
         money: Double = 0
     ) {
         super.init(name: name, gender: gender, salary: salary, bankAccount: bankAccount, money: money)
-        position = "washer"
         serviceCost = 20.0
     }
     
@@ -33,12 +31,12 @@ public class Washer: Employee {
     public func washing(client: Car) {
         if isPermissible(client: client) {
             moneyFromClient(client: client)
-            message = "My name is \(self.name), I am a \(self.position), " +
+            message = "My name is \(self.name), I am a washer, " +
             "I have \(self.bankAccount) on my bank account"
             client.cleanness = true
-            isEarned = true
+            isEarned.wrappedValue = true
         } else {
-            isEarned = false
+            isEarned.wrappedValue = false
             message = "I'm sorry, you don't have enough money, sir"
         }
         sleep(UInt32(Int.random(in: 0...5)))
@@ -53,6 +51,6 @@ public class Washer: Employee {
     }
     
     private func moneyFromClient(client: Car) {
-        self.earnings += client.pay(payment: serviceCost)
+        self.earnings.wrappedValue += client.pay(payment: serviceCost)
     }
 }

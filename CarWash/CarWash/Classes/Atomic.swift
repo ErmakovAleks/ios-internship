@@ -1,22 +1,32 @@
 import Foundation
 
 public class Atomic<T> {
-    public var unsafe: T
+    
+    // MARK: -
+    // MARK: Public variables
+    
+    public var unsafe: T {
+        get { self.value }
+        set { self.value = newValue }
+    }
+    
+    // MARK: -
+    // MARK: Private variables
+    
     private var value: T
-    private let lock = NSRecursiveLock()
+    private let lock: NSLocking
+    
+    // MARK: -
+    // MARK: Initializations
 
-    init( _ wrappedValue: T) {
-        self.lock.lock()
-        defer { self.lock.unlock() }
-        self.value = wrappedValue
-        self.unsafe = self.value
+    init( _ value: T, lock: NSLocking = NSRecursiveLock()) {
+        self.value = value
+        self.lock = lock
     }
     
     var wrappedValue: T {
         get {
-            self.lock.do {
-                return value
-            }
+            self.modify { $0 }
         }
         set {
             self.modify {
@@ -24,8 +34,11 @@ public class Atomic<T> {
             }
         }
     }
+    
+    // MARK: -
+    // MARK: Public functions
 
-    public func modify( _ modification: (inout T) -> Void) {
+    public func modify<Result>( _ modification: (inout T) -> Result) -> Result {
         self.lock.do {
             modification(&value)
         }

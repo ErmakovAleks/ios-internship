@@ -15,12 +15,11 @@ public class Employee: MoneyContainable {
     // MARK: -
     // MARK: Public variables
     
-    public var earnings: Double = 0
+    public var earnings: Atomic<Double> = Atomic(0)
     public var name: String
     public var gender: Gender
     public var salary: Salary
-    public var bankAccount: Double = 0
-    public var position = String()
+    public var bankAccount: Atomic<Double> = Atomic(0)
     public var isBusy = Atomic(false)
     public var isEarned = Atomic(false)
     public var message = String()
@@ -39,8 +38,8 @@ public class Employee: MoneyContainable {
         self.name = name
         self.gender = gender
         self.salary = salary
-        self.bankAccount = bankAccount
-        self.earnings = money
+        self.bankAccount.wrappedValue = bankAccount
+        self.earnings.wrappedValue = money
         self.serviceCost = 0
     }
     

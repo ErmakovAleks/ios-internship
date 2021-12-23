@@ -6,7 +6,6 @@ public class Director: Employee {
     // MARK: Public variables
     
     public var didFinishWork: ((Director) -> ())?
-    private let queue = DispatchQueue(label: "", qos: .background)
     
     // MARK: -
     // MARK: Initializations
@@ -25,7 +24,6 @@ public class Director: Employee {
             bankAccount: bankAccount,
             money: money
         )
-        position = "director"
     }
     
     // MARK: -
@@ -33,7 +31,7 @@ public class Director: Employee {
     
     public func action(object: MoneyContainable) {
         self.takeProfit(object: object)
-        self.message = "My name is \(self.name), I am a \(self.position), " +
+        self.message = "My name is \(self.name), I am a director, " +
         "I have \(self.bankAccount) on my bank account"
         sleep(UInt32(Int.random(in: 0...2)))
         self.didFinishWork!(self)
@@ -41,8 +39,8 @@ public class Director: Employee {
     
     public func takeProfit(object: MoneyContainable) {
         if object.isEarned.unsafe {
-            self.bankAccount += object.earnings
-            object.earnings -= object.earnings
+            self.bankAccount.wrappedValue += object.earnings.wrappedValue
+            object.earnings.wrappedValue -= object.earnings.wrappedValue
         }
     }
 }
