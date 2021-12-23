@@ -42,7 +42,7 @@ public class Accountant: Employee {
         (self.salaryCoefficient() + object.salaryCoefficient())
         self.serviceCost = object.serviceCost
         object.earnings -= object.serviceCost
-        object.isEarned = false
-        self.isEarned = true
+        object.isEarned.modify { $0 = false }
+        self.isEarned.modify { $0 = true }
     }
 }

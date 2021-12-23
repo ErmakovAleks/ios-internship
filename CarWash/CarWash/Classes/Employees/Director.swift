@@ -40,7 +40,7 @@ public class Director: Employee {
     }
     
     public func takeProfit(object: MoneyContainable) {
-        if object.isEarned {
+        if object.isEarned.unsafe {
             self.bankAccount += object.earnings
             object.earnings -= object.earnings
         }

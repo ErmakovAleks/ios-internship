@@ -8,10 +8,10 @@ public protocol MoneyContainable: AnyObject {
     var earnings: Double { get set }
     var bankAccount: Double { get set }
     var position: String { get }
-    var isBusy: Bool { get set }
+    var isBusy: Atomic<Bool> { get set }
     var message: String { get }
     var serviceCost: Double { get }
-    var isEarned: Bool{ get set }
+    var isEarned: Atomic<Bool>{ get set }
     
     // MARK: -
     // MARK: Public functions

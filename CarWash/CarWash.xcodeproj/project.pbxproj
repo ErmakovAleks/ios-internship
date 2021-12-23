@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		812B47D62772190100FC5415 /* ThreadSafeArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812B47D52772190100FC5415 /* ThreadSafeArray.swift */; };
+		81383B8327749F7000EAAD3D /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81383B8227749F7000EAAD3D /* Atomic.swift */; };
 		815DDBB3277378B90091ABAC /* NSLockingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815DDBB2277378B90091ABAC /* NSLockingExtension.swift */; };
 		81917E9427576B1A0084C5C5 /* AdminBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81917E9327576B1A0084C5C5 /* AdminBuilding.swift */; };
 		81917E96275772B50084C5C5 /* WashingBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81917E95275772B50084C5C5 /* WashingBuilding.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		812B47D52772190100FC5415 /* ThreadSafeArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadSafeArray.swift; sourceTree = "<group>"; };
+		81383B8227749F7000EAAD3D /* Atomic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atomic.swift; sourceTree = "<group>"; };
 		815DDBB2277378B90091ABAC /* NSLockingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLockingExtension.swift; sourceTree = "<group>"; };
 		81917E9327576B1A0084C5C5 /* AdminBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminBuilding.swift; sourceTree = "<group>"; };
 		81917E95275772B50084C5C5 /* WashingBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WashingBuilding.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		81EDEAEF274E6AC000977000 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				81383B8227749F7000EAAD3D /* Atomic.swift */,
 				84582729274C1DE300AB23EF /* Car.swift */,
 				849A04432750854D004B4A7A /* Controller.swift */,
 				81EDEAEC274E696200977000 /* Employees */,
@@ -243,6 +246,7 @@
 				84582724274C1C4B00AB23EF /* Accountant.swift in Sources */,
 				849A04442750854D004B4A7A /* Controller.swift in Sources */,
 				81917E98275773240084C5C5 /* CarWashComplex.swift in Sources */,
+				81383B8327749F7000EAAD3D /* Atomic.swift in Sources */,
 				81917E96275772B50084C5C5 /* WashingBuilding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
