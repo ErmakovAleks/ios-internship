@@ -26,7 +26,7 @@ public class Accountant: Employee {
     public func action(object: MoneyContainable) {
         self.distributeEarnings(object: object)
         self.message = "My name is \(self.name), I am an accountant," +
-        " I have \(self.bankAccount) on my bank account"
+        " I have \(self.bankAccount.wrappedValue) on my bank account"
         sleep(UInt32(Int.random(in: 0...3)))
         self.didFinishWork?(self)
     }

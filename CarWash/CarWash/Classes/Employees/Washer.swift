@@ -32,7 +32,7 @@ public class Washer: Employee {
         if isPermissible(client: client) {
             moneyFromClient(client: client)
             message = "My name is \(self.name), I am a washer, " +
-            "I have \(self.bankAccount) on my bank account"
+            "I have \(self.bankAccount.wrappedValue) on my bank account"
             client.cleanness = true
             isEarned.wrappedValue = true
         } else {

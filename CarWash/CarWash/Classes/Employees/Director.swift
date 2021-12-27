@@ -32,7 +32,7 @@ public class Director: Employee {
     public func action(object: MoneyContainable) {
         self.takeProfit(object: object)
         self.message = "My name is \(self.name), I am a director, " +
-        "I have \(self.bankAccount) on my bank account"
+        "I have \(self.bankAccount.wrappedValue) on my bank account"
         sleep(UInt32(Int.random(in: 0...2)))
         self.didFinishWork!(self)
     }

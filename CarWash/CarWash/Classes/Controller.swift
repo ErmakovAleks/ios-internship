@@ -77,8 +77,8 @@ public class Controller {
         
         queue.async {
             let freeWashers: Atomic<[Washer]> = Atomic([])
-            freeWashers.modify { $0 = self.washers.filter { !($0.isBusy.wrappedValue) } }
             freeWashers.modify {
+                $0 = self.washers.filter { !($0.isBusy.wrappedValue) }
                 $0.forEach { washer in
                     if !self.cars.isEmpty {
                         washer.isBusy.wrappedValue = true
@@ -95,11 +95,17 @@ public class Controller {
         queue.async {
             if object is Washer {
                 self.view.show(message: object.message)
-                if object.isEarned.wrappedValue && !self.accountants.isEmpty {
-                    var freeAccountants = self.accountants.filter { !($0.isBusy.wrappedValue) }
-                    self.accountant = freeAccountants.removeFirst()
-                    self.accountant?.isBusy.wrappedValue = true
-                    self.accountant?.action(object: object)
+                if object.isEarned.wrappedValue {
+                    let freeAccountants: Atomic<[Accountant]> = Atomic([])
+                    freeAccountants.modify {
+                        $0 = self.accountants.filter { !($0.isBusy.wrappedValue) }
+                        if !$0.isEmpty {
+                            self.accountant = $0.removeFirst()
+                            self.accountant?.isBusy.wrappedValue = true
+                            self.accountant?.action(object: object)
+                            object.isBusy.wrappedValue = false
+                        }
+                    }
                 }
                 object.isBusy.wrappedValue = false
             } else if object is Accountant {
