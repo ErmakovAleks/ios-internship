@@ -13,11 +13,6 @@ public class AdminBuilding {
 
     init(director: Director, rooms: Cabinet...) {
         self.director = director
-        self.rooms = (rooms)
-    }
-    
-    public init(directorName: String, directorGender: Gender, rooms: Cabinet...) {
-        self.director = Director.init(name: directorName, gender: directorGender)
-        self.rooms = (rooms)
+        self.rooms = rooms
     }
 }

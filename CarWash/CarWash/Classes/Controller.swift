@@ -78,10 +78,10 @@ public class Controller {
         queue.async {
             let freeWashers: Atomic<[Washer]> = Atomic([])
             freeWashers.modify {
-                $0 = self.washers.filter { !($0.isBusy.wrappedValue) }
+                $0 = self.washers.filter { !($0.isBusy.value) }
                 $0.forEach { washer in
                     if !self.cars.isEmpty {
-                        washer.isBusy.wrappedValue = true
+                        washer.isBusy.value = true
                         if let car = self.cars.removeFirst() {
                             washer.action(car: car)
                         }
@@ -95,26 +95,28 @@ public class Controller {
         queue.async {
             if object is Washer {
                 self.view.show(message: object.message)
-                if object.isEarned.wrappedValue {
+                if object.earnings.value > 0 {
                     let freeAccountants: Atomic<[Accountant]> = Atomic([])
                     freeAccountants.modify {
-                        $0 = self.accountants.filter { !($0.isBusy.wrappedValue) }
+                        $0 = self.accountants.filter { !($0.isBusy.value) }
                         if !$0.isEmpty {
-                            self.accountant = $0.removeFirst()
-                            self.accountant?.isBusy.wrappedValue = true
-                            self.accountant?.action(object: object)
-                            object.isBusy.wrappedValue = false
+                            $0.forEach { accountant in
+                                accountant.isBusy.value = true
+                                accountant.action(object: object)
+                                object.isBusy.value = false
+                            }
                         }
                     }
                 }
-                object.isBusy.wrappedValue = false
+                object.isBusy.value = false
             } else if object is Accountant {
                 self.view.show(message: object.message)
-                if object.isEarned.wrappedValue {
+                if object.earnings.value > 0 {
                     self.director?.action(object: object)
                 }
-                object.isBusy.wrappedValue = false
+                object.isBusy.value = false
             } else if object is Director {
+                print("aaa")
                 self.view.show(message: object.message)
             }
         }

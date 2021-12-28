@@ -24,9 +24,13 @@ public class Car {
     // MARK: -
     // MARK: Public functions
     
-    public func pay(payment: Double) -> Double {
-        money = self.money - payment
-        return payment
+    public func pay(payment: Double) -> Double? {
+        if payment <= self.money {
+            self.money = self.money - payment
+            return payment
+        } else {
+            return nil
+        }
     }
 }
 

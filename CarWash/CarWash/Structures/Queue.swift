@@ -7,7 +7,7 @@ public struct Queue<T> {
     
     public var isEmpty: Bool {
         return self.lock.do {
-            return array.isEmpty
+            return self.array.isEmpty
         }
     }
     
@@ -30,13 +30,13 @@ public struct Queue<T> {
     public mutating func extract() -> T? {
         return self.lock.do {
             return !self.array.isEmpty
-            ? self.array.removeFirst()
-            : nil
+                ? self.array.removeFirst()
+                : nil
         }
     }
     
     public mutating func clear() {
-        self.lock.do{
+        self.lock.do {
             array.removeAll()
         }
     }

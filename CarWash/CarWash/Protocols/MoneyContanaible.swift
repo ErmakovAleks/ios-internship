@@ -10,7 +10,6 @@ public protocol MoneyContainable: AnyObject {
     var isBusy: Atomic<Bool> { get set }
     var message: String { get }
     var serviceCost: Double { get }
-    var isEarned: Atomic<Bool>{ get set }
     
     // MARK: -
     // MARK: Public functions

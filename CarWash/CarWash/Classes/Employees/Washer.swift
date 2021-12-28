@@ -12,12 +12,11 @@ public class Washer: Employee {
     
     public override init(
         name: String,
-        gender: Gender,
         salary: Salary = .coefficient(0.15),
         bankAccount: Double = 0.0,
         money: Double = 0
     ) {
-        super.init(name: name, gender: gender, salary: salary, bankAccount: bankAccount, money: money)
+        super.init(name: name, salary: salary, bankAccount: bankAccount, money: money)
         serviceCost = 20.0
     }
     
@@ -31,15 +30,13 @@ public class Washer: Employee {
     public func washing(client: Car) {
         if isPermissible(client: client) {
             moneyFromClient(client: client)
-            message = "My name is \(self.name), I am a washer, " +
-            "I have \(self.bankAccount.wrappedValue) on my bank account"
+            message = "My name is \(self.name), I am a washer, "
+                + "I have \(self.bankAccount.value) on my bank account"
             client.cleanness = true
-            isEarned.wrappedValue = true
         } else {
-            isEarned.wrappedValue = false
             message = "I'm sorry, you don't have enough money, sir"
         }
-        sleep(UInt32(Int.random(in: 0...5)))
+        //sleep(UInt32(Int.random(in: 0...5)))
         self.didFinishWork?(self)
     }
     
@@ -51,6 +48,8 @@ public class Washer: Employee {
     }
     
     private func moneyFromClient(client: Car) {
-        self.earnings.wrappedValue += client.pay(payment: serviceCost)
+        if let money = client.pay(payment: serviceCost) {
+            self.earnings.value = self.earnings.value + money
+        }
     }
 }

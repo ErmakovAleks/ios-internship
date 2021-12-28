@@ -28,17 +28,17 @@ public class ThreadSafeArray<T> {
     
     public func removeFirst() -> T? {
         return self.queue.sync(flags: .barrier) {
-            self.array.removeFirst()
+            !self.array.isEmpty
+                ? self.array.removeFirst()
+                : nil
         }
     }
     
-    public func getItem( _ index: Int) -> T? {
-        self.queue.sync {
-            if !array.isEmpty {
-                return self.array[index]
-            } else {
-                return nil
-            }
+    subscript ( _ index: Int) -> T? {
+        return self.queue.sync {
+            !self.array.isEmpty
+                ? self.array[index]
+                : nil
         }
     }
 }

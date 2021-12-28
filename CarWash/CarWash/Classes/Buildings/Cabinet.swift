@@ -11,8 +11,8 @@ public class Cabinet: Room {
     // MARK: -
     // MARK: Initializations
     
-    public init(directorName: String, directorGender: Gender) {
-        self.director = Director.init(name: directorName, gender: directorGender)
+    public init(directorName: String) {
+        self.director = Director.init(name: directorName)
         self.employees = []
     }
     

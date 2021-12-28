@@ -17,11 +17,9 @@ public class Employee: MoneyContainable {
     
     public var earnings: Atomic<Double> = Atomic(0)
     public var name: String
-    public var gender: Gender
     public var salary: Salary
     public var bankAccount: Atomic<Double> = Atomic(0)
     public var isBusy = Atomic(false)
-    public var isEarned = Atomic(false)
     public var message = String()
     public var serviceCost: Double
     
@@ -30,16 +28,14 @@ public class Employee: MoneyContainable {
     
     public init(
         name: String,
-        gender: Gender,
         salary: Salary = .coefficient(0.2),
         bankAccount: Double = 0.0,
         money: Double = 0
     ){
         self.name = name
-        self.gender = gender
         self.salary = salary
-        self.bankAccount.wrappedValue = bankAccount
-        self.earnings.wrappedValue = money
+        self.bankAccount.value = bankAccount
+        self.earnings.value = money
         self.serviceCost = 0
     }
     

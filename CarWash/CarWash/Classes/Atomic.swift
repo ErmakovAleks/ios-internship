@@ -6,25 +6,25 @@ public class Atomic<T> {
     // MARK: Public variables
     
     public var unsafe: T {
-        get { self.value }
-        set { self.value = newValue }
+        get { self.wrappedValue }
+        set { self.wrappedValue = newValue }
     }
     
     // MARK: -
     // MARK: Private variables
     
-    private var value: T
-    private let lock: NSLocking
+    private var wrappedValue: T
+    public let lock: NSLocking
     
     // MARK: -
     // MARK: Initializations
 
     init( _ value: T, lock: NSLocking = NSRecursiveLock()) {
-        self.value = value
+        self.wrappedValue = value
         self.lock = lock
     }
     
-    var wrappedValue: T {
+    var value: T {
         get {
             self.modify { $0 }
         }
@@ -40,7 +40,7 @@ public class Atomic<T> {
 
     public func modify<Result>( _ modification: (inout T) -> Result) -> Result {
         self.lock.do {
-            modification(&value)
+            modification(&wrappedValue)
         }
     }
 }
