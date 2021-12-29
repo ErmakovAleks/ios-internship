@@ -119,36 +119,6 @@ public class Controller {
             default:
                 print("Unexpected type of object")
             }
-            
-            
-            
-            
-            if object is Washer {
-                self.view.show(message: object.message)
-                if object.earnings.value > 0 {
-                    let freeAccountants: Atomic<[Accountant]> = Atomic([])
-                    freeAccountants.modify {
-                        $0 = self.accountants.filter { !($0.isBusy.value) }
-                        if !$0.isEmpty {
-                            $0.forEach { accountant in
-                                accountant.isBusy.value = true
-                                accountant.action(object: object)
-                                object.isBusy.value = false
-                            }
-                        }
-                    }
-                }
-                object.isBusy.value = false
-            } else if object is Accountant {
-                self.view.show(message: object.message)
-                if object.earnings.value > 0 {
-                    self.director?.action(object: object)
-                }
-                object.isBusy.value = false
-            } else if object is Director {
-                print("aaa")
-                self.view.show(message: object.message)
-            }
         }
     }
 }
