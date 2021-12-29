@@ -20,6 +20,12 @@ public class ThreadSafeArray<T> {
     // MARK: -
     // MARK: Public functions
     
+    public func append(contentsOf arr: [T]) {
+        self.queue.sync(flags: .barrier) {
+            self.array.append(contentsOf: arr)
+        }
+    }
+    
     public func append( _ newItem: T) {
         self.queue.sync(flags: .barrier) {
             self.array.append(newItem)

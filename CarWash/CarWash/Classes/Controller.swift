@@ -13,8 +13,8 @@ public class Controller {
     var accountant: Accountant?
     var washer: Washer?
     
-    var accountants: [Accountant]
-    var washers: [Washer]
+    let accountants: [Accountant]
+    let washers: [Washer]
     var cars: ThreadSafeArray<Car> = ThreadSafeArray()
     let queue = DispatchQueue(label: "com.car-wash.controller-queue", attributes: .concurrent)
     let lock = NSRecursiveLock()
@@ -68,21 +68,22 @@ public class Controller {
     public func checkQueue() {
         
         self.complex.washingBuilding.rooms.forEach { room in
+            var tempCarArray = [Car]()
+            
             while !room.cars.isEmpty {
                 if let car = room.cars.extract() {
-                    self.cars.append(car)
+                    tempCarArray.append(car)
                 }
             }
+            cars.append(contentsOf: tempCarArray)
         }
         
-        queue.async {
-            let freeWashers: Atomic<[Washer]> = Atomic([])
-            freeWashers.modify {
-                $0 = self.washers.filter { !($0.isBusy.value) }
-                $0.forEach { washer in
-                    if !self.cars.isEmpty {
-                        washer.isBusy.value = true
+        self.queue.async {
+            for washer in self.washers {
+                washer.isBusy.modify {
+                    if !$0 {
                         if let car = self.cars.removeFirst() {
+                            $0 = true
                             washer.action(car: car)
                         }
                     }
@@ -93,6 +94,35 @@ public class Controller {
     
     public func report(object: MoneyContainable) {
         queue.async {
+            self.view.show(message: object.message)
+            switch object {
+            case is Washer:
+                if object.earnings.value > 0 {
+                    var inLoop = true
+                    while(inLoop) {
+                        for accountant in self.accountants {
+                            accountant.isBusy.modify {
+                                if !$0 {
+                                    $0 = true
+                                    accountant.action(object: object)
+                                    inLoop = false
+                                }
+                            }
+                        }
+                    }
+                }
+            case is Accountant:
+                if object.earnings.value > 0 {
+                    self.director?.action(object: object)
+                }
+                object.isBusy.value = false
+            default:
+                print("Unexpected type of object")
+            }
+            
+            
+            
+            
             if object is Washer {
                 self.view.show(message: object.message)
                 if object.earnings.value > 0 {
