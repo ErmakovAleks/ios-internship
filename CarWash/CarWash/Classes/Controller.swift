@@ -77,7 +77,6 @@ public class Controller {
             }
             cars.append(contentsOf: tempCarArray)
         }
-        
         self.queue.async {
             for washer in self.washers {
                 washer.isBusy.modify {
@@ -98,19 +97,18 @@ public class Controller {
             switch object {
             case is Washer:
                 if object.earnings.value > 0 {
-                    var inLoop = true
-                    while(inLoop) {
-                        for accountant in self.accountants {
-                            accountant.isBusy.modify {
-                                if !$0 {
-                                    $0 = true
-                                    accountant.action(object: object)
-                                    object.isBusy.value = false
-                                    inLoop = false
-                                }
+                    for accountant in self.accountants {
+                        accountant.isBusy.modify {
+                            if !$0 {
+                                $0 = true
+                                accountant.action(object: object)
                             }
+                            object.isBusy.value = false
                         }
                     }
+                } else {
+                    object.isBusy.value = false
+                    
                 }
                 break
             case is Accountant:

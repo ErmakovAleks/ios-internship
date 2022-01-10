@@ -36,7 +36,7 @@ public class Washer: Employee {
         } else {
             message = "I'm sorry, you don't have enough money, sir"
         }
-        //sleep(UInt32(Int.random(in: 0...5)))
+        sleep(UInt32(Int.random(in: 0...1)))
         self.didFinishWork?(self)
     }
     

@@ -14,7 +14,7 @@ public class Director: Employee {
         self.takeProfit(object: object)
         self.message = "My name is \(self.name), I am a director, "
             + "I have \(self.bankAccount.value) on my bank account"
-        //sleep(UInt32(Int.random(in: 0...2)))
+        sleep(UInt32(Int.random(in: 0...2)))
         self.didFinishWork!(self)
     }
     

@@ -17,8 +17,8 @@ public class Car {
     }
     
     public init() {
-        self.money = Double.random(in: 0...100)
-        self.cleanness = Bool.random()
+        self.money = Double.random(in: 50...100)
+        self.cleanness = false
     }
     
     // MARK: -

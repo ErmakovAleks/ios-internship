@@ -14,7 +14,7 @@ public class Accountant: Employee {
         self.distributeEarnings(object: object)
         self.message = "My name is \(self.name), I am an accountant,"
             + " I have \(self.bankAccount.unsafe) on my bank account"
-        //sleep(UInt32(Int.random(in: 0...3)))
+        sleep(UInt32(Int.random(in: 0...3)))
         self.didFinishWork?(self)
     }
     
