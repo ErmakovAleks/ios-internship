@@ -105,19 +105,26 @@ public class Controller {
                                 if !$0 {
                                     $0 = true
                                     accountant.action(object: object)
+                                    object.isBusy.value = false
                                     inLoop = false
                                 }
                             }
                         }
                     }
                 }
+                break
             case is Accountant:
                 if object.earnings.value > 0 {
-                    self.director?.action(object: object)
+                    self.director?.isBusy.modify {
+                        if !$0 {
+                            self.director?.action(object: object)
+                            object.isBusy.value = false
+                        }
+                    }
                 }
-                object.isBusy.value = false
+                break
             default:
-                print("Unexpected type of object")
+                break
             }
         }
     }
